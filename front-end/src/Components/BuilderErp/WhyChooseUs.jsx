@@ -62,7 +62,7 @@ const WhyChooseUs = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="bg-[#a52a2a] rounded-2xl p-8 md:p-12 text-white mb-16">
+        <div className="bg-[#ec6a6a] rounded-2xl p-8 md:p-12 text-white mb-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center">
               <div className="text-4xl font-bold mb-2">98%</div>

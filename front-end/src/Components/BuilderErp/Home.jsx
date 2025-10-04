@@ -11,7 +11,7 @@ import LatestNews from '../BuilderErp/LattestNews';
 import WhyChooseUs from '../BuilderErp/WhyChooseUs';
 
 
-const Home = () => {
+const BuilderERPHome = () => {
   return (
     <>
        <RealEstateBanner/>
@@ -30,4 +30,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default BuilderERPHome;

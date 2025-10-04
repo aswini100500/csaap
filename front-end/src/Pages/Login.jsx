@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -7,6 +8,17 @@ const Login = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [userType, setUserType] = useState('user');
+  
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Set user type based on navigation state
+    if (location.state?.userType) {
+      setUserType(location.state.userType);
+    }
+  }, [location]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,13 +35,47 @@ const Login = () => {
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
     
-    // Handle login logic here
-    console.log('Login attempted with:', credentials);
+    // Handle login logic here based on userType
+    console.log(`Logging in as ${userType} with:`, credentials);
+    
+    // After successful login, redirect based on user type
+    switch(userType) {
+      case 'admin':
+        navigate('/admin-dashboard');
+        break;
+      case 'distributor':
+        navigate('/distributor-dashboard');
+        break;
+      case 'user':
+        navigate('/user-dashboard');
+        break;
+      default:
+        navigate('/');
+    }
+    
     setIsLoading(false);
   };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const getLoginTitle = () => {
+    switch(userType) {
+      case 'admin': return 'Admin Login';
+      case 'distributor': return 'Distributor Login';
+      case 'user': return 'User Login';
+      default: return 'Login';
+    }
+  };
+
+  const getWelcomeMessage = () => {
+    switch(userType) {
+      case 'admin': return 'Sign in to access the CSaap ERP Admin Panel';
+      case 'distributor': return 'Sign in to access your CSaap ERP Distributor Account';
+      case 'user': return 'Sign in to access your CSaap ERP Account';
+      default: return 'Sign in to access your CSaap ERP account';
+    }
   };
 
   return (
@@ -62,8 +108,8 @@ const Login = () => {
                 </svg>
               </div>
             </div>
-            <h2 className="text-3xl font-bold text-gray-800">Welcome Back</h2>
-            <p className="text-gray-600 mt-2">Sign in to access your CSaap ERP account</p>
+            <h2 className="text-3xl font-bold text-gray-800">{getLoginTitle()}</h2>
+            <p className="text-gray-600 mt-2">{getWelcomeMessage()}</p>
           </div>
 
           <form onSubmit={handleSubmit} className="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
@@ -169,7 +215,7 @@ const Login = () => {
                   Signing in...
                 </div>
               ) : (
-                'Sign in'
+                `Sign in as ${userType.charAt(0).toUpperCase() + userType.slice(1)}`
               )}
             </button>
 

@@ -18,31 +18,49 @@ import Hero from "./Pages/Inventory/Hero";
 import HeroPage from "./Pages/Invoice/BannerPage";
 import ABanner from "./Pages/Accounting/ABanner";
 import SBanner from "./Pages/SaleForce/SBanner";
-import Dashboard from './Components/SuperAdmin/Dashboard';
-import Menulist from './Components/SuperAdmin/Menu/Menulist';
-import Menugroup from './Components/SuperAdmin/Menu/Menugroup';
-import Userlist from './Components/SuperAdmin/User/Userlist';
-import Rolelist from './Components/SuperAdmin/User/Rolelist';
-import Createcategory from './Components/SuperAdmin/Category/Createcategory';
-import AdminBanner from './Components/SuperAdmin/Homepage/Banner';
-import BestforBuss from './Components/SuperAdmin/Homepage/BestforBuss';
-import IndustrySupport from './Components/SuperAdmin/Homepage/IndustrySupport';
-import PlanningCreate from './Components/SuperAdmin/Subscription/PlanningCreate'
-import ApplicationCreate from './Components/SuperAdmin/Subscription/ApplicationCreate'
-import DownloadCreate from './Components/SuperAdmin/Subscription/DownloadCreate'
-import Plan from "./Components/SuperAdmin/Subscription/Plan";
-import Appcreate from "./Components/SuperAdmin/Subscription/Appcreate";
-import UserCompany from "./Components/SuperAdmin/Subscription/UserCompany";
-import Appgroup from "./Components/SuperAdmin/Subscription/AppGroup";
-import Job from "./Components/SuperAdmin/JobOpen.jsx/Job";
-import Appprice from "./Components/SuperAdmin/Subscription/Appprice";
-import Customer_receipt from "./Components/SuperAdmin/Customer_support/Customer_receipt";
-import Demo from "./Components/SuperAdmin/Customer_support/Demo";
-import Customer_list from "./Components/SuperAdmin/Customer_support/Customer_list";
-import Customer_company from "./Components/SuperAdmin/Customer_support/Customer_company";
-import AdminLayout from './Components/SuperAdmin/AdminLayout';
+
 import CartPage from './Pages/CartPage';
 import PricingPage from './Pages/PricingPage';
+import BuilderERPHome from './Components/BuilderErp/Home';
+import AdminLayout from './Components/BuilderErp/BuilderERPAdmin/AdminLayout';
+import BrokerPage from  './Pages/BuilderERPpages/BrokerPage';
+
+import ContractorPage from  './Pages/BuilderERPpages/ContractorPage';
+import EngineersPage from  './Pages/BuilderERPpages/EngineersPage';
+import ArchitectsPage from  './Pages/BuilderERPpages/ArchitectsPage';
+import CustomersPage from  './Pages/BuilderERPpages/CustomersPage';
+// import PropertyListingForm from  './Pages/BuilderERPpages/PropertyListingForm';
+import StockPage from  './Pages/BuilderERPpages/StockPage';
+import SupplierPage from  './Pages/BuilderERPpages/SupplierPage';
+import PurchaseEntry from  './Pages/BuilderERPpages/PurchaseEntry';
+import PurchaseHistory from  './Pages/BuilderERPpages/PurchaseHistory';
+import PurchaseLedger from  './Pages/BuilderERPpages/PurchaseLedger';
+import StockEntry from  './Pages/BuilderERPpages/StockEntry';
+import StockList from  './Pages/BuilderERPpages/StockList';    
+import ProjectManagement from './Pages/BuilderERPpages/ProjectManegement';
+import StockTransferEntry from  './Pages/BuilderERPpages/StockTransferEntry';
+import StockTransferAccept from  './Pages/BuilderERPpages/StockTransferAccept';
+import SaleEntry from  './Pages/BuilderERPpages/SaleEntry';
+import SaleHistory from  './Pages/BuilderERPpages/SaleHistory';
+import IndentHistory from  './Pages/BuilderERPpages/IndentHistory';
+import IndentEntry from  './Pages/BuilderERPpages/IndentEntry';
+import BarcodeSale from  './Pages/BuilderERPpages/BarcodeSale';
+import SupplierList from  './Pages/BuilderERPpages/SupplierList'; 
+import HeroSection from './Components/BuilderErp/HeroSection';
+import BuilderLogin from './Pages/BuilderERPpages/BuilderLogin';
+// Csaap SuperAdmin
+import AdminLayoutWrapper from './Components/CsaapSuperAdmin/AdminLayout';
+import AdminHeroSection from './Components/CsaapSuperAdmin/HeroSection';
+// import Sidebar from './Components/CsaapSuperAdmin/SupportAdminSidebar';
+import CompanyManagement from './Pages/csapSuperAdminPages/CompanyManegement';
+import PlansPage from './Pages/csapSuperAdminPages/PlansPage';
+import ModuleManagement from './Pages/csapSuperAdminPages/ModuleManagement';
+import CategoriesPage from './Pages/csapSuperAdminPages/CategoriesPage';
+import RolesPage from './Pages/csapSuperAdminPages/RolesPage';
+import PermissionsPage from './Pages/csapSuperAdminPages/PermissionsPage';
+import RolePermissionManagement from './Pages/csapSuperAdminPages/RoleAndPermissionManegement';
+ import PropertyListingForm from './Components/CsaapSuperAdmin/PrpoertyListingForm';
+// import { FiBook, FiTruck } from 'react-icons/fi';    
 
 
 
@@ -70,30 +88,52 @@ const App = () => {
             <Route path="/accounting" element={<ABanner />} />
             <Route path="/sales" element={<SBanner />} />
             {/* super admin */}
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/menulist" element={<Menulist />} />
-            <Route path="/menugroups" element={<Menugroup />} />
-            <Route path="/users" element={<Userlist />} />
-            <Route path="/rolelist" element={<Rolelist />} />
-            <Route path="/create-category" element={<Createcategory />} />
-            <Route path="/addbanner" element={<AdminBanner />} />
-            <Route path="/best-for-business" element={<BestforBuss />} />
-            <Route path="/industry-support" element={<IndustrySupport />} />
-            <Route path="/planning" element={<PlanningCreate />} />
-            <Route path="/Application" element={<ApplicationCreate />} />
-            <Route path="/download" element={<DownloadCreate />} />
-            <Route path="/plan" element={<Plan />} />
-            <Route path="/app" element={<Appcreate />} />
-            <Route path="/app-group" element={<Appgroup />} />
-            <Route path="/job-create" element={<Job />} />
-            <Route path="/app-price" element={<Appprice />} />
-            <Route path="/customer-receipt" element={<Customer_receipt />} />
-            <Route path="/demo-request" element={<Demo />} />
-            <Route path="/customer-list" element={<Customer_list />} />
-            <Route path="/customer-company" element={<Customer_company />} />
-            <Route path="/user-company-app" element={<UserCompany />} />
-            <Route path="/adminpage" element={<AdminLayout />} />
+    
+
+      
             <Route path="/pricing" element={<PricingPage />} />
+            <Route path="/builder-erp" element={<BuilderERPHome />} />
+        <Route path="/builder-erp/admin" element={<AdminLayout />}>
+          <Route index element={<HeroSection />} />
+          <Route path="broker" element={<BrokerPage />} />
+          <Route path="projects" element={<ProjectManagement />} />
+          <Route path="contractors" element={<ContractorPage />} />
+          <Route path="engineers" element={<EngineersPage />} />
+          <Route path="architects" element={<ArchitectsPage />} />
+          <Route path="customer" element={<CustomersPage />} />
+          {/* <Route path="propertyform" element={<PropertyListingForm />} /> */}
+          <Route path="stockpage" element={<StockPage />} />
+          <Route path="supplierpage" element={<SupplierPage />} />
+          <Route path="purchase-entry" element={<PurchaseEntry />} />
+          <Route path="purchase-history" element={<PurchaseHistory />} />
+          <Route path="purchase-ledger" element={<PurchaseLedger />} />
+          <Route path="stock-entry" element={<StockEntry />} />
+          <Route path="stock-list" element={<StockList />} />
+          <Route path="stock-transfer-entry" element={<StockTransferEntry />} />
+          <Route path="stock-transfer-accept" element={<StockTransferAccept />} />
+          <Route path="sale-entry" element={<SaleEntry />} />
+          <Route path="sale-history" element={<SaleHistory />} />
+          <Route path="indent-History" element={<IndentHistory />} />
+          <Route path="indent-entry" element={<IndentEntry />} />
+          <Route path="barcode-sale" element={<BarcodeSale />} />
+          <Route path="supplier-list" element={<SupplierList />} />
+           {/* <Route path="/builder-erp/builderLogin" element={<BuilderLogin />} /> */}
+
+       
+        </Route>
+            {/* Csaap superAdmin */}
+            <Route path="/admin-dashboard" element={<AdminLayoutWrapper />}>
+        <Route index element={<AdminHeroSection />} />
+        <Route path="company" element={<CompanyManagement />} />
+        <Route path="plan" element={<PlansPage />} />
+        <Route path="modules" element={<ModuleManagement />} />
+        <Route path="category" element={<CategoriesPage />} />
+        <Route path="settings" element={<div>System Settings</div>} />
+        <Route path="propertyform" element={<PropertyListingForm />} />
+        <Route path="roles" element={<RolesPage />} />
+        <Route path="permissions" element={<PermissionsPage />} />
+        <Route path="role-permission-management" element={<RolePermissionManagement />} />
+      </Route>
             
 
 

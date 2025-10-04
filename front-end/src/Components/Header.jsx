@@ -7,7 +7,7 @@ import {
   FiMap, FiMail, FiMessageCircle, FiAward, FiBook, FiShoppingBag,
   FiHome, FiPackage, FiShoppingCart, FiCoffee, 
   FiMapPin, FiServer, FiSettings, FiLink, FiHelpCircle, 
-  FiBookOpen, FiUser, FiFile 
+  FiBookOpen, FiUser, FiFile, FiLogIn, FiShield, FiUserPlus
 } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -18,6 +18,7 @@ const Header = () => {
   const [isSoftwareDropdownOpen, setIsSoftwareDropdownOpen] = useState(false);
   const [isLogoDropdownOpen, setIsLogoDropdownOpen] = useState(false);
   const [isResourcesDropdownOpen, setIsResourcesDropdownOpen] = useState(false);
+  const [isLoginDropdownOpen, setIsLoginDropdownOpen] = useState(false);
   const navigate = useNavigate();
   
   // Refs to track dropdown elements
@@ -29,15 +30,118 @@ const Header = () => {
   const logoButtonRef = useRef(null);
   const resourcesDropdownRef = useRef(null);
   const resourcesButtonRef = useRef(null);
+  const loginDropdownRef = useRef(null);
+  const loginButtonRef = useRef(null);
 
   // Timeout refs for delayed closing
   const productTimeoutRef = useRef(null);
   const softwareTimeoutRef = useRef(null);
   const logoTimeoutRef = useRef(null);
   const resourcesTimeoutRef = useRef(null);
+  const loginTimeoutRef = useRef(null);
+
+  // Updated login handlers to navigate to /login with user type
+  const handleAdminLogin = () => {
+    navigate('/login', { state: { userType: 'admin' } });
+    setIsLoginDropdownOpen(false);
+    setIsMenuOpen(false);
+  };
+
+  const handleDistributorLogin = () => {
+    navigate('/login', { state: { userType: 'distributor' } });
+    setIsLoginDropdownOpen(false);
+    setIsMenuOpen(false);
+  };
+
+  const handleUserLogin = () => {
+    navigate('/login', { state: { userType: 'user' } });
+    setIsLoginDropdownOpen(false);
+    setIsMenuOpen(false);
+  };
+
+  // Your existing dropdown handlers remain the same
+  const handleProductMouseEnter = () => {
+    clearTimeout(productTimeoutRef.current);
+    setIsProductDropdownOpen(true);
+    setIsSoftwareDropdownOpen(false);
+    setIsLogoDropdownOpen(false);
+    setIsResourcesDropdownOpen(false);
+    setIsLoginDropdownOpen(false);
+  };
+
+  const handleProductMouseLeave = () => {
+    productTimeoutRef.current = setTimeout(() => {
+      setIsProductDropdownOpen(false);
+    }, 200);
+  };
+
+  const handleSoftwareMouseEnter = () => {
+    clearTimeout(softwareTimeoutRef.current);
+    setIsSoftwareDropdownOpen(true);
+    setIsProductDropdownOpen(false);
+    setIsLogoDropdownOpen(false);
+    setIsResourcesDropdownOpen(false);
+    setIsLoginDropdownOpen(false);
+  };
+
+  const handleSoftwareMouseLeave = () => {
+    softwareTimeoutRef.current = setTimeout(() => {
+      setIsSoftwareDropdownOpen(false);
+    }, 200);
+  };
+
+  const handleLogoMouseEnter = () => {
+    clearTimeout(logoTimeoutRef.current);
+    setIsLogoDropdownOpen(true);
+    setIsProductDropdownOpen(false);
+    setIsSoftwareDropdownOpen(false);
+    setIsResourcesDropdownOpen(false);
+    setIsLoginDropdownOpen(false);
+  };
+
+  const handleLogoMouseLeave = () => {
+    logoTimeoutRef.current = setTimeout(() => {
+      setIsLogoDropdownOpen(false);
+    }, 200);
+  };
+
+  const handleResourcesMouseEnter = () => {
+    clearTimeout(resourcesTimeoutRef.current);
+    setIsResourcesDropdownOpen(true);
+    setIsProductDropdownOpen(false);
+    setIsSoftwareDropdownOpen(false);
+    setIsLogoDropdownOpen(false);
+    setIsLoginDropdownOpen(false);
+  };
+
+  const handleResourcesMouseLeave = () => {
+    resourcesTimeoutRef.current = setTimeout(() => {
+      setIsResourcesDropdownOpen(false);
+    }, 200);
+  };
+
+  // Login dropdown handlers with delay
+  const handleLoginMouseEnter = () => {
+    clearTimeout(loginTimeoutRef.current);
+    setIsLoginDropdownOpen(true);
+    setIsProductDropdownOpen(false);
+    setIsSoftwareDropdownOpen(false);
+    setIsLogoDropdownOpen(false);
+    setIsResourcesDropdownOpen(false);
+  };
+
+  const handleLoginMouseLeave = () => {
+    loginTimeoutRef.current = setTimeout(() => {
+      setIsLoginDropdownOpen(false);
+    }, 200);
+  };
 
   const handleLoginClick = () => {
-    navigate('/login');
+    setIsLoginDropdownOpen(!isLoginDropdownOpen);
+    setIsProductDropdownOpen(false);
+    setIsSoftwareDropdownOpen(false);
+    setIsLogoDropdownOpen(false);
+    setIsResourcesDropdownOpen(false);
   };
 
   // Close dropdowns when clicking outside
@@ -67,6 +171,12 @@ const Header = () => {
       ) {
         setIsResourcesDropdownOpen(false);
       }
+      if (
+        loginDropdownRef.current && !loginDropdownRef.current.contains(event.target) && 
+        loginButtonRef.current && !loginButtonRef.current.contains(event.target)
+      ) {
+        setIsLoginDropdownOpen(false);
+      }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -82,65 +192,9 @@ const Header = () => {
       clearTimeout(softwareTimeoutRef.current);
       clearTimeout(logoTimeoutRef.current);
       clearTimeout(resourcesTimeoutRef.current);
+      clearTimeout(loginTimeoutRef.current);
     };
   }, []);
-
-  // Handlers for dropdowns with delay
-  const handleProductMouseEnter = () => {
-    clearTimeout(productTimeoutRef.current);
-    setIsProductDropdownOpen(true);
-    setIsSoftwareDropdownOpen(false);
-    setIsLogoDropdownOpen(false);
-    setIsResourcesDropdownOpen(false);
-  };
-
-  const handleProductMouseLeave = () => {
-    productTimeoutRef.current = setTimeout(() => {
-      setIsProductDropdownOpen(false);
-    }, 200);
-  };
-
-  const handleSoftwareMouseEnter = () => {
-    clearTimeout(softwareTimeoutRef.current);
-    setIsSoftwareDropdownOpen(true);
-    setIsProductDropdownOpen(false);
-    setIsLogoDropdownOpen(false);
-    setIsResourcesDropdownOpen(false);
-  };
-
-  const handleSoftwareMouseLeave = () => {
-    softwareTimeoutRef.current = setTimeout(() => {
-      setIsSoftwareDropdownOpen(false);
-    }, 200);
-  };
-
-  const handleLogoMouseEnter = () => {
-    clearTimeout(logoTimeoutRef.current);
-    setIsLogoDropdownOpen(true);
-    setIsProductDropdownOpen(false);
-    setIsSoftwareDropdownOpen(false);
-    setIsResourcesDropdownOpen(false);
-  };
-
-  const handleLogoMouseLeave = () => {
-    logoTimeoutRef.current = setTimeout(() => {
-      setIsLogoDropdownOpen(false);
-    }, 200);
-  };
-
-  const handleResourcesMouseEnter = () => {
-    clearTimeout(resourcesTimeoutRef.current);
-    setIsResourcesDropdownOpen(true);
-    setIsProductDropdownOpen(false);
-    setIsSoftwareDropdownOpen(false);
-    setIsLogoDropdownOpen(false);
-  };
-
-  const handleResourcesMouseLeave = () => {
-    resourcesTimeoutRef.current = setTimeout(() => {
-      setIsResourcesDropdownOpen(false);
-    }, 200);
-  };
 
   const LogoDropdown = () => (
     <div 
@@ -172,6 +226,67 @@ const Header = () => {
             <img src="sociomint_logo.png" alt="Sociomint Logo" className="h-8 object-contain mb-1" />
             <span className="text-xs text-gray-600">Sociomint</span>
           </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  // Updated Login Dropdown Component
+  const LoginDropdown = () => (
+    <div 
+      ref={loginDropdownRef}
+      className="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200"
+      onMouseEnter={handleLoginMouseEnter}
+      onMouseLeave={handleLoginMouseLeave}
+    >
+      <div className="p-2">
+        <h3 className="font-bold text-gray-800 mb-2 text-sm uppercase flex items-center px-3 py-1">
+          <FiLogIn className="mr-2" /> Login Options
+        </h3>
+        <div className="space-y-1">
+          <button
+            onClick={handleAdminLogin}
+            className="flex items-center w-full text-gray-700 hover:text-blue-600 hover:bg-gray-50 text-sm py-2 px-3 rounded transition-colors duration-200"
+          >
+            <FiShield className="mr-3 text-red-500" />
+            <div className="text-left">
+              <div className="font-medium">Admin Login</div>
+              <div className="text-xs text-gray-500">System administrator access</div>
+            </div>
+          </button>
+          
+          <button
+            onClick={handleDistributorLogin}
+            className="flex items-center w-full text-gray-700 hover:text-blue-600 hover:bg-gray-50 text-sm py-2 px-3 rounded transition-colors duration-200"
+          >
+            <FiUserPlus className="mr-3 text-green-500" />
+            <div className="text-left">
+              <div className="font-medium">Distributor Login</div>
+              <div className="text-xs text-gray-500">Partner and distributor access</div>
+            </div>
+          </button>
+          
+          <button
+            onClick={handleUserLogin}
+            className="flex items-center w-full text-gray-700 hover:text-blue-600 hover:bg-gray-50 text-sm py-2 px-3 rounded transition-colors duration-200"
+          >
+            <FiUser className="mr-3 text-blue-500" />
+            <div className="text-left">
+              <div className="font-medium">User Login</div>
+              <div className="text-xs text-gray-500">Customer and end-user access</div>
+            </div>
+          </button>
+        </div>
+        
+        <div className="border-t border-gray-200 mt-2 pt-2">
+          <Link 
+            to="/register" 
+            className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-2 px-3 rounded hover:bg-gray-50 transition-colors duration-200"
+            onClick={() => setIsLoginDropdownOpen(false)}
+          >
+            <FiUserPlus className="mr-3 text-purple-500" />
+            Create New Account
+          </Link>
         </div>
       </div>
     </div>
@@ -219,6 +334,7 @@ const Header = () => {
                   setIsSoftwareDropdownOpen(false);
                   setIsLogoDropdownOpen(false);
                   setIsResourcesDropdownOpen(false);
+                  setIsLoginDropdownOpen(false);
                 }}
               >
                 Product
@@ -355,6 +471,7 @@ const Header = () => {
                   setIsProductDropdownOpen(false);
                   setIsLogoDropdownOpen(false);
                   setIsResourcesDropdownOpen(false);
+                  setIsLoginDropdownOpen(false);
                 }}
               >
                 Software
@@ -476,6 +593,7 @@ const Header = () => {
                   setIsProductDropdownOpen(false);
                   setIsSoftwareDropdownOpen(false);
                   setIsLogoDropdownOpen(false);
+                  setIsLoginDropdownOpen(false);
                 }}
               >
                 Resources
@@ -514,9 +632,6 @@ const Header = () => {
             </div>
 
             {/* Other navigation links */}
-            {/* <Link to="/desktop-monitoring" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300">
-              Desktop Monitoring
-            </Link> */}
             <Link to="/hosting" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300">
               Hosting
             </Link>
@@ -542,6 +657,7 @@ const Header = () => {
                   setIsProductDropdownOpen(false);
                   setIsSoftwareDropdownOpen(false);
                   setIsResourcesDropdownOpen(false);
+                  setIsLoginDropdownOpen(false);
                 }}
                 className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-300"
                 onMouseEnter={handleLogoMouseEnter}
@@ -553,27 +669,29 @@ const Header = () => {
             </div>
 
             {/* Cart Icon - desktop */}
-          <Link to="/cartpage">  <div className="hidden md:block relative group">
-              <button className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-300">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-gray-700 group-hover:text-blue-600 transition-colors duration-300"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-              </button>
-              <span className="absolute -top-1 -right-1 bg-[#ff4081] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-                3
-              </span>
-            </div></Link>
+            <Link to="/cartpage">  
+              <div className="hidden md:block relative group">
+                <button className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-300">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 text-gray-700 group-hover:text-blue-600 transition-colors duration-300"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                    />
+                  </svg>
+                </button>
+                <span className="absolute -top-1 -right-1 bg-[#ff4081] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                  3
+                </span>
+              </div>
+            </Link>
 
             {/* Buttons - desktop */}
             <div className="hidden md:flex items-center space-x-4">
@@ -582,12 +700,30 @@ const Header = () => {
                   Book a Demo
                 </button>
               </Link>
-              <button 
-                onClick={handleLoginClick}
-                className="bg-[#ff4081] hover:bg-[#f50057] text-white px-4 py-2 rounded-md transition-colors duration-300 transform hover:-translate-y-0.5 shadow-md"
-              >
-                Login
-              </button>
+              
+              {/* Updated Login Button with Dropdown */}
+              <div className="relative">
+                <button 
+                  ref={loginButtonRef}
+                  onClick={handleLoginClick}
+                  onMouseEnter={handleLoginMouseEnter}
+                  onMouseLeave={handleLoginMouseLeave}
+                  className="bg-[#ff4081] hover:bg-[#f50057] text-white px-4 py-2 rounded-md transition-colors duration-300 transform hover:-translate-y-0.5 shadow-md flex items-center"
+                >
+                  Login
+                  <svg 
+                    className={`ml-1 w-4 h-4 transition-transform duration-200 ${isLoginDropdownOpen ? 'rotate-180' : ''}`} 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24" 
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                
+                {isLoginDropdownOpen && <LoginDropdown />}
+              </div>
             </div>
 
             {/* Mobile menu button with hamburger icon (three bars) */}
@@ -643,6 +779,7 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t border-gray-200 px-4 py-4 transition-all duration-300 ease-in-out">
             <div className="flex flex-col space-y-4">
+              {/* Product dropdown for mobile */}
               <div className="border-b border-gray-100 pb-2">
                 <button 
                   className="flex justify-between items-center w-full text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300"
@@ -844,7 +981,6 @@ const Header = () => {
                 
                 {isResourcesDropdownOpen && (
                   <div className="pl-4 mt-2 space-y-3">
-                    
                     <Link to="/resources/question-and-answer" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1">
                       <FiHelpCircle className="mr-2 text-blue-500" /> Question and Answer
                     </Link>
@@ -862,9 +998,6 @@ const Header = () => {
               </div>
 
               {/* Other mobile menu items */}
-              <Link to="/desktop-monitoring" className="text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300 border-b border-gray-100">
-                Desktop Monitoring
-              </Link>
               <Link to="/hosting" className="text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300 border-b border-gray-100">
                 Hosting
               </Link>
@@ -912,6 +1045,53 @@ const Header = () => {
                       <img src="sociomint_logo.png" alt="Sociomint Logo" className="h-6 object-contain mb-1" />
                       <span className="text-xs text-gray-600">Sociomint</span>
                     </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Login Dropdown in Mobile Menu */}
+              <div className="border-b border-gray-100 pb-2">
+                <button 
+                  className="flex justify-between items-center w-full text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300"
+                  onClick={() => setIsLoginDropdownOpen(!isLoginDropdownOpen)}
+                >
+                  <span>Login Options</span>
+                  <svg className={`w-4 h-4 transform transition-transform ${isLoginDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                
+                {isLoginDropdownOpen && (
+                  <div className="pl-4 mt-2 space-y-2">
+                    <button
+                      onClick={handleAdminLogin}
+                      className="flex items-center w-full text-gray-700 hover:text-blue-600 text-sm py-2"
+                    >
+                      <FiShield className="mr-3 text-red-500" />
+                      Admin Login
+                    </button>
+                    <button
+                      onClick={handleDistributorLogin}
+                      className="flex items-center w-full text-gray-700 hover:text-blue-600 text-sm py-2"
+                    >
+                      <FiUserPlus className="mr-3 text-green-500" />
+                      Distributor Login
+                    </button>
+                    <button
+                      onClick={handleUserLogin}
+                      className="flex items-center w-full text-gray-700 hover:text-blue-600 text-sm py-2"
+                    >
+                      <FiUser className="mr-3 text-blue-500" />
+                      User Login
+                    </button>
+                    <Link 
+                      to="/register" 
+                      className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-2"
+                      onClick={() => setIsLoginDropdownOpen(false)}
+                    >
+                      <FiUserPlus className="mr-3 text-purple-500" />
+                      Create New Account
+                    </Link>
                   </div>
                 )}
               </div>
