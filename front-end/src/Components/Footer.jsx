@@ -351,11 +351,11 @@ const Footer = () => {
     </div>
                 <p className="mt-3 flex items-center text-gray-200 text-base">
                   <FaPhone className="flex-shrink-0 mr-2 w-4 h-4" />
-                  Phone: <span className="ml-1">+1 5589 55488 55</span>
+                  Phone: <span className="ml-1">+91 9910877219</span>
                 </p>
                 <p className="flex items-center text-gray-200 text-base">
                   <FaEnvelope className="flex-shrink-0 mr-2 w-4 h-4" />
-                  Email: <span className="ml-1">info@example.com</span>
+                  Email: <span className="ml-1">info@csaap.com</span>
                 </p>
                 
                 {/* Download App Section */}

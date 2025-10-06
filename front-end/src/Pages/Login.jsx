@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
     username: '',
-    password: ''
+    password: '',
+
   });
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [userType, setUserType] = useState('user');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   
   const location = useLocation();
   const navigate = useNavigate();
@@ -28,33 +31,57 @@ const Login = () => {
     }));
   };
 
+// In your Login component
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Handle login logic here based on userType
-    console.log(`Logging in as ${userType} with:`, credentials);
-    
-    // After successful login, redirect based on user type
-    switch(userType) {
-      case 'admin':
-        navigate('/admin-dashboard');
-        break;
-      case 'distributor':
-        navigate('/distributor-dashboard');
-        break;
-      case 'user':
-        navigate('/user-dashboard');
-        break;
-      default:
-        navigate('/');
+
+    try {
+      // Your existing login API call
+      const response = await fetch('https://api.csaap.com/apii/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+
+      });
+
+      const data = await response.json();
+      
+      if (response.ok) {
+        // Store authentication data
+        localStorage.setItem('authToken', data.token);
+        localStorage.setItem('userData', JSON.stringify(data.user));
+        
+        // Trigger re-render to show redirect
+        setIsLoggedIn(true);
+      } else {
+        alert('Login failed: ' + (data.message || 'Unknown error'));
+      }
+    } catch (error) {
+      alert('Login error: ' + error.message);
+    } finally {
+     setIsLoading(false);
     }
-    
-    setIsLoading(false);
   };
+
+  // Redirect based on role after successful login
+  if (isLoggedIn && userData.role) {
+    switch (userData.role) {
+      case 'superadmin':
+        return <Navigate to="/super-admin-dashboard" replace />;
+      case 'admin':
+        return <Navigate to="/builder-erp/admin" replace />;
+      case 'distributor':
+        return <Navigate to="/distributor-dashboard" replace />;
+      case 'user':
+        return <Navigate to="/user-dashboard" replace />;
+      default:
+        return <Navigate to="/" replace />;
+    }
+  }
+// Helper function to determine dashboard path based on role
+
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -112,7 +139,7 @@ const Login = () => {
             <p className="text-gray-600 mt-2">{getWelcomeMessage()}</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+          <form onSubmit={handleSubmit} className="bg-white p-8  rounded-xl shadow-lg border border-gray-100">
             <div className="mb-5">
               <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
                 Email Address*
@@ -130,6 +157,7 @@ const Login = () => {
                   name="username"
                   value={credentials.username}
                   onChange={handleChange}
+                  autoComplete="off"
                   placeholder="Enter your email"
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
                   required
@@ -153,6 +181,7 @@ const Login = () => {
                   name="password"
                   value={credentials.password}
                   onChange={handleChange}
+                  autoComplete="off"
                   placeholder="Enter your password"
                   className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
                   required

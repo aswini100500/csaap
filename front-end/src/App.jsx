@@ -61,6 +61,8 @@ import PermissionsPage from './Pages/csapSuperAdminPages/PermissionsPage';
 import RolePermissionManagement from './Pages/csapSuperAdminPages/RoleAndPermissionManegement';
  import PropertyListingForm from './Components/CsaapSuperAdmin/PrpoertyListingForm';
 // import { FiBook, FiTruck } from 'react-icons/fi';    
+import ProtectedRoute from './Components/ProtectedRoutes';
+import { Navigate } from 'react-router-dom';
 
 
 
@@ -71,7 +73,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="login" element={<Login />} />
+          {/* <Route path="login" element={<Login />} /> */}
           <Route path="signup" element={<SignUp />} />
           <Route path="ERPSolutions" element={<ERPSolutions/>}/>
           <Route path="PayrollSoftware" element={<PayrollSoftware/>}/>
@@ -122,18 +124,55 @@ const App = () => {
        
         </Route>
             {/* Csaap superAdmin */}
-            <Route path="/admin-dashboard" element={<AdminLayoutWrapper />}>
-        <Route index element={<AdminHeroSection />} />
-        <Route path="company" element={<CompanyManagement />} />
-        <Route path="plan" element={<PlansPage />} />
-        <Route path="modules" element={<ModuleManagement />} />
-        <Route path="category" element={<CategoriesPage />} />
-        <Route path="settings" element={<div>System Settings</div>} />
-        <Route path="propertyform" element={<PropertyListingForm />} />
-        <Route path="roles" element={<RolesPage />} />
-        <Route path="permissions" element={<PermissionsPage />} />
-        <Route path="role-permission-management" element={<RolePermissionManagement />} />
-      </Route>
+ 
+
+
+      
+        {/* Login route */}
+        <Route path="/login" element={<Login />} />
+         
+        {/* Protected admin routes */}
+        <Route 
+          path="/super-admin-dashboard" 
+          element={
+          
+              <AdminLayoutWrapper />
+            
+          }
+        >
+          <Route index element={<AdminHeroSection />} />
+          <Route path="company" element={<CompanyManagement />} />
+          <Route path="plan" element={<PlansPage />} />
+          <Route path="modules" element={<ModuleManagement />} />
+          <Route path="category" element={<CategoriesPage />} />
+          <Route path="settings" element={<div>System Settings</div>} />
+          <Route path="propertyform" element={<PropertyListingForm />} />
+          <Route path="roles" element={<RolesPage />} />
+          <Route path="permissions" element={<PermissionsPage />} />
+          <Route path="role-permission-management" element={<RolePermissionManagement />} />
+        </Route>
+
+        {/* Add other protected routes as needed */}
+        {/* <Route 
+          path="/distributor-dashboard" 
+          element={
+            <ProtectedRoute requiredRole="distributor">
+              <DistributorDashboard />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/user-dashboard" 
+          element={
+            <ProtectedRoute requiredRole="user">
+              <UserDashboard />
+            </ProtectedRoute>
+          } 
+        /> */}
+
+        {/* Fallback route */}
+        <Route path="*" element={<Navigate to="/" />} />
+     
             
 
 
