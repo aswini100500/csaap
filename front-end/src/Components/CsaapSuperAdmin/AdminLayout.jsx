@@ -3,7 +3,7 @@ import Header from './Header';
 import Sidebar from './Sidebar';
 import AdminHeroSection from './HeroSection';
 import BrokerAdminDashboard from './Broker';
-import ProjectsPage from './ProjectManegement';
+// import ProjectsPage from './ProjectManegement';
 import PropertyListingForm from './PrpoertyListingForm';
 import AddCompanyForm from '../../Pages/csapSuperAdminPages/AddCompany';
 import CompanyManagement from '../../Pages/csapSuperAdminPages/CompanyManegement';
@@ -66,13 +66,13 @@ const AdminLayout = () => {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        {/* <Header 
+        <Header 
           isSidebarCollapsed={isSidebarCollapsed}
           toggleSidebar={toggleSidebar}
           isMobileSidebarOpen={isMobileSidebarOpen}
           toggleMobileSidebar={toggleMobileSidebar}
           showCollapseIcon={activeContent === 'dashboard'} // Only show collapse icon on dashboard
-        /> */}
+        />
         
         {/* Main Content */}
         <main className={`flex-1 overflow-y-auto ${activeContent === 'company' ? 'p-0' : 'p-2 md:p-4'}`}>

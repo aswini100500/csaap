@@ -98,18 +98,21 @@ const KeyFeaturesSection = () => {
 
 // Feature list data
 const features = [
-  "Automate various business processes, reducing manual effort and enhancing efficiency",
-  "Streamline all your business operations",
-  "Automate your Sales Process with CRM Solutions",
-  "Improved order processing, inventory management, and timely deliveries",
-  "Increase security measures and centralized data management",
-  "Manage your Cost of Raw-material and Semi-Finished products and Goods",
-  "Complete process from project planning to successfully delivered",
-  "Prevents equipment downtime and reduces maintenance costs",
-  "AI based GPS-tracker to live track and manage your field employees with a map view",
-  "Keep track of asset movements around the company & reduce Mis-management of assets",
-  "Streamline task creation & assignment to responsible persons",
-  "Payroll management which includes attendance breakup, salary processing, incentives, allowances & performance appraisal"
+	"Robotize   multiple business workflows to minimize manual tasks and boost overall efficiency",
+   "Simplify and optimize your entire range of business operations",
+	"Enhance your sales cycle with CRM-driven automation",
+	"Achieve faster order fulfilment, efficient inventory control, and on-time deliveries",
+"	Strengthen data security with centralized management systems",
+"	Monitor and manage expenses of raw materials, semi-finished items, and finished goods",
+"Ensure smooth execution of projects from initial planning to final delivery",
+"	Avoid unexpected equipment failures and cut down on maintenance costs",
+"Utilize AI-powered GPS tracking to monitor and manage field staff in real time with map visualization",
+"Track asset movement within the organization to minimize mismanagement and losses",
+"Simplify task allocation by creating and assigning responsibilities seamlessly",
+	"End-to-end payroll management covering attendance tracking, salary calculations, incentives, allowances, and employee appraisals", 
+	"Access key business functions anytime, anywhere through mobile apps",
+"	A solution that grows with your business, from small enterprises to large organizations",
+
 ];
 
 export default KeyFeaturesSection;

@@ -320,11 +320,11 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: SiFacebook, href: 'https://facebook.com/yourpage', color: 'text-[#3b5998]' },
-    { icon: SiX, href: 'https://twitter.com/yourpage', color: 'text-white' },
-    { icon: SiLinkedin, href: 'https://linkedin.com/company/yourcompany', color: 'text-[#0077b5]' },
-    { icon: SiInstagram, href: 'https://instagram.com/yourpage', color: 'text-[#FFC0CB]' },
-    { icon: SiYoutube, href: 'https://youtube.com/yourchannel', color: 'text-[#FF0000]' }
+    { icon: SiFacebook, href: 'https://www.facebook.com/people/Csaap/61582241901891/', color: 'text-[#3b5998]' },
+    // { icon: SiX, href: 'https://twitter.com/yourpage', color: 'text-white' },
+    // { icon: SiLinkedin, href: 'https://linkedin.com/company/yourcompany', color: 'text-[#0077b5]' },
+    { icon: SiInstagram, href: 'https://www.instagram.com/csaap.official?igsh=MWxvZ2c3OGxoemFteA==', color: 'text-[#FFC0CB]' },
+    { icon: SiYoutube, href: 'https://www.youtube.com/@Csaapindia', color: 'text-[#FF0000]' }
   ];
 
   return (

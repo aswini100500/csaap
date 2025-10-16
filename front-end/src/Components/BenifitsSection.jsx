@@ -100,10 +100,10 @@ const BenefitsSection = () => {
           <div className="w-full lg:w-10/12">
             <div className="heading text-center mb-12">
               <h1 className="text-4xl font-bold text-gray-800">
-                Benefits Of Using <span className="text-blue-500">Marg ERP</span> Software
+                Benefits Of Using <span className="text-blue-500">Csaap ERP</span> Software
               </h1>
               <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-                Discover all the powerful features that make Marg ERP the perfect solution for your business management needs.
+                Discover all the powerful features that make csaap ERP the perfect solution for your business management needs.
               </p>
             </div>
           </div>

@@ -26,15 +26,15 @@ const Sidebar = ({
   const menuItems = [
     { id: 'dashboard', icon: HomeIcon, label: 'Dashboard', color: 'text-purple-500' },
     { id: 'company', icon: BuildingOffice2Icon, label: 'Company', color: 'text-blue-500' },
-    { id: 'users', icon: UsersIcon, label: 'Users', color: 'text-green-500' },
+    // { id: 'users', icon: UsersIcon, label: 'Users', color: 'text-green-500' },
     // Add the new Role & Permission Management item
-    { id: 'role-permission-management', icon: LockClosedIcon, label: 'Role & Permission', color: 'text-cyan-500' },
-    { id: 'roles', icon: ShieldCheckIcon, label: 'Roles', color: 'text-amber-500' },
-    { id: 'permissions', icon: KeyIcon, label: 'Permissions', color: 'text-orange-500' },
-    // { id: 'modules', icon: PuzzlePieceIcon, label: 'Modules', color: 'text-yellow-500' },
+    // { id: 'role-permission-management', icon: LockClosedIcon, label: 'Role & Permission', color: 'text-cyan-500' },
+    // { id: 'roles', icon: ShieldCheckIcon, label: 'Roles', color: 'text-amber-500' },
+    // { id: 'permissions', icon: KeyIcon, label: 'Permissions', color: 'text-orange-500' },
+    { id: 'modules', icon: PuzzlePieceIcon, label: 'Modules', color: 'text-yellow-500' },
     { id: 'plan', icon: CurrencyDollarIcon, label: 'Plan', color: 'text-red-500' },
     { id: 'category', icon: RectangleStackIcon, label: 'Category', color: 'text-indigo-500' },
-    { id: 'reports', icon: ChartBarIcon, label: 'Reports', color: 'text-teal-500' },
+    // { id: 'reports', icon: ChartBarIcon, label: 'Reports', color: 'text-teal-500' },
     { id: 'settings', icon: Cog6ToothIcon, label: 'Settings', color: 'text-gray-500' },
     { id: 'logout', icon: ArrowLeftOnRectangleIcon, label: 'Logout', color: 'text-pink-500' }
   ];

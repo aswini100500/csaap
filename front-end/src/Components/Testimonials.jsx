@@ -372,7 +372,7 @@ const Testimonials = () => {
       <div className="container mx-auto px-4">
         <div className="section-title text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mt-5 p-5 mb-25">
-            Happy <span className="text-blue-600">Users</span> Say About MargBooks
+            Happy <span className="text-blue-600">Users</span> Say About csaap ERP
           </h2>
         </div>
         

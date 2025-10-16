@@ -33,6 +33,7 @@ const PlansPage = () => {
           Authorization: `Bearer ${localStorage.getItem('authToken')}`,
         },
       });
+      
 
       if (response.data && response.data.plans) {
         setPlans(response.data.plans);

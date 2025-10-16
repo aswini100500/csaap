@@ -147,33 +147,72 @@ const Header = () => {
   const LogoDropdown = () => (
     <div 
       ref={logoDropdownRef} 
-      className="absolute right-0 mt-2 w-64 bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200"
+      className="absolute right-0 mt-7 w-64 bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200"
       onMouseEnter={handleLogoMouseEnter}
       onMouseLeave={handleLogoMouseLeave}
     >
       <div className="p-4">
         <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase">Our Brands</h3>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="flex flex-col items-center p-2 border border-gray-100 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+        <div className="grid grid-cols-2 mb-8 gap-4">
+       
+          {/* Audit Filing */}
+              <a 
+                href="https://www.cloudsat.in" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex flex-col items-center p-2 border border-gray-100 rounded hover:bg-gray-50 transition-colors cursor-pointer"
+              >
+                <img src="Cloudsat-logo.png" alt="Audit Filing Logo" className="h-8 object-contain mb-1" />
+                <span className="text-xs text-gray-600">cloudsat</span>
+              </a>
+              <a 
+                href="https://www.auditfiling.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex flex-col items-center p-2 border border-gray-100 rounded hover:bg-gray-50 transition-colors cursor-pointer"
+              >
+                <img src="auditfiling-logo-bg.png" alt="Audit Filing Logo" className="h-8 object-contain mb-1" />
+                <span className="text-xs text-gray-600">Audit Filing</span>
+              </a>
+                  <a 
+                href="https://www.tracolab.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex flex-col items-center p-2 border border-gray-100 rounded hover:bg-gray-50 transition-colors cursor-pointer"
+              >
+                <img src="tracolab-1.png" alt="tracolab Logo" className="h-8 object-contain mb-1" />
+                <span className="text-xs text-gray-600">tracolab</span>
+              </a>
+              {/* coddor */}
+               <a 
+                href="https://www.coddor.com "
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex flex-col items-center p-2 border border-gray-100 rounded hover:bg-gray-50 transition-colors cursor-pointer"
+              >
+                <img src="coddor-logo.png" alt="coddor-Logo" className="h-8 object-contain mb-1" />
+                <span className="text-xs text-gray-600">coddor</span>
+              </a>
+              {/* sociomint */}
+                 <a 
+                href="https://www.sociomint.com "
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex flex-col items-center p-2 border border-gray-100 rounded hover:bg-gray-50 transition-colors cursor-pointer"
+              >
+                <img src="sociomint_logo.png" alt="sociomint-Logo" className="h-8 object-contain mb-1" />
+                <span className="text-xs text-gray-600">sociomint</span>
+              </a>
+              
+              
+
+
+                 <div className="flex flex-col items-center p-2 border border-gray-100 rounded hover:bg-gray-50 transition-colors cursor-pointer">
             <img src="iq.png" alt="IQ Logo" className="h-8 object-contain mb-1" />
-            <span className="text-xs text-gray-600">IQ Logo</span>
-          </div>
-          <div className="flex flex-col items-center p-2 border border-gray-100 rounded hover:bg-gray-50 transition-colors cursor-pointer">
-            <img src="logo.png" alt="Company Logo" className="h-8 object-contain mb-1" />
-            <span className="text-xs text-gray-600">Main Logo</span>
-          </div>
-          <div className="flex flex-col items-center p-2 border border-gray-100 rounded hover:bg-gray-50 transition-colors cursor-pointer">
-            <img src="auditfiling-logo-bg.png" alt="Audit Filing Logo" className="h-8 object-contain mb-1" />
-            <span className="text-xs text-gray-600">Audit Filing</span>
-          </div>
-          <div className="flex flex-col items-center p-2 border border-gray-100 rounded hover:bg-gray-50 transition-colors cursor-pointer">
-            <img src="tracolab-logo.png" alt="Tracolab Logo" className="h-8 object-contain mb-1" />
-            <span className="text-xs text-gray-600">Tracolab</span>
-          </div>
-          <div className="flex flex-col items-center p-2 border border-gray-100 rounded hover:bg-gray-50 transition-colors cursor-pointer col-span-2">
-            <img src="sociomint_logo.png" alt="Sociomint Logo" className="h-8 object-contain mb-1" />
-            <span className="text-xs text-gray-600">Sociomint</span>
-          </div>
+            <span className="text-xs text-gray-600">IQ Note</span>
+            </div>
+
+   
         </div>
       </div>
     </div>
@@ -183,7 +222,7 @@ const Header = () => {
     <div className="header-container sticky top-0 z-50">
       {/* Top banner section */}
       <section className="bg-[#112c75] text-white py-2 text-center transition-all duration-300 hover:bg-[#0a1f5a]">
-        Call For Demo: +91-9910877219 | Email:info@csaap.com
+        Call For Demo: +91-9910877219 | Email: info@csaap.com
       </section>
 
       {/* Navigation section */}
@@ -205,7 +244,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation links - Centered */}
-          <div className="hidden md:flex items-center space-x-4 mx-4 flex-grow justify-center">
+          <div className="hidden md:flex items-center space-x-8 mx-4 flex-grow justify-center">
             {/* Product dropdown */}
             <div 
               className="relative group"
@@ -231,13 +270,13 @@ const Header = () => {
               
               {isProductDropdownOpen && (
                 <div 
-                  className="absolute left-0 mt-2 w-[800px] bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200"
+                  className="absolute left-0 mt-8 w-[1050px] bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200"
                   onMouseEnter={handleProductMouseEnter}
                   onMouseLeave={handleProductMouseLeave}
                 >
-                  <div className="grid grid-cols-4 gap-6 p-6">
+                  <div className="flex flex-nowrap gap-8 p-6 min-w-max">
                     {/* Solutions Column */}
-                    <div className="space-y-3">
+                    <div className="flex-shrink-0 w-56">
                       <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center">
                         <FiBox className="mr-2" /> Solutions
                       </h3>
@@ -245,7 +284,7 @@ const Header = () => {
                         <Link to="/ERPSolutions" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
                           <FiGrid className="mr-2 text-blue-500" /> ERP (Corporate Solutions)
                         </Link>
-                        <Link to="/employee-management" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
+                        <Link to="/employee-manegement" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
                           <FiUsers className="mr-2 text-blue-500" /> Employee Management
                         </Link>
                         <Link to="/accounting" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
@@ -254,9 +293,7 @@ const Header = () => {
                         <Link to="/inventory" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
                           <FiLayers className="mr-2 text-blue-500" /> Stock & Inventory
                         </Link>
-                        <Link to="/solutions" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiGrid className="mr-2 text-blue-500" /> Other Solutions
-                        </Link>
+                        
                         <Link to="/PayrollSoftware" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
                           <FiClock className="mr-2 text-blue-500" /> Attendance & Payroll Software
                         </Link>
@@ -267,7 +304,7 @@ const Header = () => {
                     </div>
 
                     {/* Software Column */}
-                    <div className="space-y-3">
+                    <div className="flex-shrink-0 w-56">
                       <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center">
                         <FiFileText className="mr-2" /> Software
                       </h3>
@@ -291,7 +328,7 @@ const Header = () => {
                     </div>
 
                     {/* Mobile Apps Column */}
-                    <div className="space-y-3">
+                    <div className="flex-shrink-0 w-56">
                       <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center">
                         <FiSmartphone className="mr-2" /> Mobile Apps
                       </h3>
@@ -312,7 +349,7 @@ const Header = () => {
                     </div>
 
                     {/* Other Services Column */}
-                    <div className="space-y-3">
+                    <div className="flex-shrink-0 w-56">
                       <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center">
                         <FiAward className="mr-2" /> Other Services
                       </h3>
@@ -323,17 +360,15 @@ const Header = () => {
                         <Link to="/email-marketing" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
                           <FiMail className="mr-2 text-orange-500" /> Email Marketing
                         </Link>
-                        <Link to="/bulk-email" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiMessageCircle className="mr-2 text-orange-500" /> Bulk Email Marketing
-                        </Link>
-                        <Link to="/promotional-campaigns" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiAward className="mr-2 text-orange-500" /> Promotional Campaigning
-                        </Link>
+                     
                         <Link to="/corporate-email" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
                           <FiMail className="mr-2 text-orange-500" /> Corporate Email Account
                         </Link>
                         <Link to="/school-management" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
                           <FiBook className="mr-2 text-orange-500" /> School Management System
+                        </Link>
+                        <Link to="/Transport-management" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
+                          <FiTruck className="mr-2 text-orange-500" /> Transport Management System
                         </Link>
                       </div>
                     </div>
@@ -367,13 +402,13 @@ const Header = () => {
               
               {isSoftwareDropdownOpen && (
                 <div 
-                  className="absolute left-0 mt-2 w-[800px] bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200"
+                  className="absolute left-0 mt-8 w-[900px] bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200"
                   onMouseEnter={handleSoftwareMouseEnter}
                   onMouseLeave={handleSoftwareMouseLeave}
                 >
-                  <div className="grid grid-cols-3 gap-6 p-6">
+                  <div className="flex flex-nowrap gap-8 p-6 min-w-max">
                     {/* Retail & Shop Software Column */}
-                    <div className="space-y-3">
+                    <div className="flex-shrink-0 w-64">
                       <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center">
                         <FiShoppingBag className="mr-2" /> Retail & Shop Software
                       </h3>
@@ -400,7 +435,7 @@ const Header = () => {
                     </div>
 
                     {/* Distribution Software Column */}
-                    <div className="space-y-3">
+                    <div className="flex-shrink-0 w-64">
                       <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center">
                         <FiTruck className="mr-2" /> Distribution Software
                       </h3>
@@ -427,7 +462,7 @@ const Header = () => {
                     </div>
 
                     {/* Industry & Manufacturing Software Column */}
-                    <div className="space-y-3">
+                    <div className="flex-shrink-0 w-64">
                       <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center">
                         <FiLayers className="mr-2" /> Industry & Manufacturing
                       </h3>
@@ -488,7 +523,7 @@ const Header = () => {
               
               {isResourcesDropdownOpen && (
                 <div 
-                  className="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200"
+                  className="absolute left-0 mt-8 w-64 bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200"
                   onMouseEnter={handleResourcesMouseEnter}
                   onMouseLeave={handleResourcesMouseLeave}
                 >
@@ -516,11 +551,15 @@ const Header = () => {
             </div>
 
             {/* Other navigation links */}
-            <Link to="/hosting" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300">
+            <a 
+              href="https://domain.cloudsat.in" 
+              className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300"
+            >
               Hosting
-            </Link>
-            <Link to="/bulk-sms" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300">
-              Bulk SMS
+            </a>
+
+            <Link to="/builder-erp" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300">
+              BuilderERP
             </Link>
             <Link to="/pricing" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300">
               Pricing
@@ -675,9 +714,7 @@ const Header = () => {
                     <Link to="/inventory" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1">
                       <FiLayers className="mr-2 text-blue-500" /> Stock & Inventory
                     </Link>
-                    <Link to="/solutions" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiGrid className="mr-2 text-blue-500" /> Other Solutions
-                    </Link>
+                  
                     <Link to="/PayrollSoftware" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1">
                       <FiClock className="mr-2 text-blue-500" /> Attendance & Payroll Software
                     </Link>
@@ -729,17 +766,15 @@ const Header = () => {
                     <Link to="/email-marketing" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1">
                       <FiMail className="mr-2 text-orange-500" /> Email Marketing
                     </Link>
-                    <Link to="/bulk-email" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiMessageCircle className="mr-2 text-orange-500" /> Bulk Email Marketing
-                    </Link>
-                    <Link to="/promotional-campaigns" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiAward className="mr-2 text-orange-500" /> Promotional Campaigning
-                    </Link>
+                   
                     <Link to="/corporate-email" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1">
                       <FiMail className="mr-2 text-orange-500" /> Corporate Email Account
                     </Link>
                     <Link to="/school-management" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1">
                       <FiBook className="mr-2 text-orange-500" /> School Management System
+                    </Link>
+                        <Link to="/Transport-management" className="flex items-center text-gray-700 hover:text-blue-600 text-sm py-1">
+                      <FiTruck className="mr-2 text-orange-500" /> Transport Management System
                     </Link>
                   </div>
                 )}
