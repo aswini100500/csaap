@@ -1424,7 +1424,7 @@ const Header = () => {
   const UserDropdown = () => (
     <div 
       ref={userDropdownRef} 
-      className="absolute right-0 mt-7 w-48 bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200"
+      className="absolute right-0 mt-7 w-48 bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200 cursor-pointer"
       onMouseEnter={handleUserMouseEnter}
       onMouseLeave={handleUserMouseLeave}
     >
@@ -1441,7 +1441,7 @@ const Header = () => {
         <div className="space-y-1 mt-2">
           <button 
             onClick={() => handleNavClick('/dashboard')}
-            className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-2 px-3 rounded hover:bg-gray-50 transition-colors"
+            className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-2 px-3 rounded hover:bg-gray-50 transition-colors cursor-pointer"
           >
             <FiLayout className="mr-2 text-blue-500" /> 
             Dashboard
@@ -1449,7 +1449,7 @@ const Header = () => {
           
           <button 
             onClick={() => handleNavClick('/profile')}
-            className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-2 px-3 rounded hover:bg-gray-50 transition-colors"
+            className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-2 px-3 rounded hover:bg-gray-50 transition-colors cursor-pointer"
           >
             <FiUser className="mr-2 text-green-500" /> 
             Profile
@@ -1457,7 +1457,7 @@ const Header = () => {
           
           <button 
             onClick={() => handleNavClick('/settings')}
-            className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-2 px-3 rounded hover:bg-gray-50 transition-colors"
+            className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-2 px-3 rounded hover:bg-gray-50 transition-colors cursor-pointer"
           >
             <FiSettingsIcon className="mr-2 text-purple-500" /> 
             Settings
@@ -1465,7 +1465,7 @@ const Header = () => {
           
           <button 
             onClick={handleLogout}
-            className="flex items-center w-full text-left text-gray-700 hover:text-red-600 text-sm py-2 px-3 rounded hover:bg-gray-50 transition-colors"
+            className="flex items-center w-full text-left text-gray-700 hover:text-red-600 text-sm py-2 px-3 rounded hover:bg-gray-50 transition-colors cursor-pointer"
           >
             <FiLogOut className="mr-2 text-red-500" /> 
             Logout
@@ -1478,12 +1478,12 @@ const Header = () => {
   const LogoDropdown = () => (
     <div 
       ref={logoDropdownRef} 
-      className="absolute right-0 mt-7 w-64 bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200"
+      className="absolute right-0 mt-7 w-64 bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200 cursor-pointer"
       onMouseEnter={handleLogoMouseEnter}
       onMouseLeave={handleLogoMouseLeave}
     >
       <div className="p-4">
-        <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase">Our Brands</h3>
+        <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase cursor-pointer">Our Brands</h3>
         <div className="grid grid-cols-2 mb-8 gap-4">
        
           {/* Audit Filing */}
@@ -1550,9 +1550,9 @@ const Header = () => {
   );
 
   return (
-    <div className="header-container sticky top-0 z-50">
+    <div className="header-container sticky top-0 z-50 ">
       {/* Top banner section */}
-      <section className="bg-[#112c75] text-white py-2 text-center transition-all duration-300 hover:bg-[#0a1f5a]">
+      <section className="bg-[#112c75] cursor-pointer text-white py-2 text-center transition-all duration-300 hover:bg-[#0a1f5a]">
         Call For Demo: +91-9910877219 | Email: info@csaap.com
       </section>
 
@@ -1563,12 +1563,12 @@ const Header = () => {
           <div className="flex items-center">
             <button 
               onClick={() => handleNavClick('/', false)}
-              className="focus:outline-none"
+              className="focus:outline-none cursor-pointer"
             >
               <img
                 src="/logo.png"
                 alt="Company Logo"
-                className="h-12 object-contain transition-transform duration-300 hover:scale-105 animate-jump"
+                className="h-12 object-contain transition-transform duration-300 hover:scale-105 animate-jump cursor-pointer"
                 onError={(e) => {
                   e.target.src =
                     'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIGZpbGw9IiMxMTJjNzUiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmaWxsPSJ3aGl0ZSI+TE9HTyBJTUFHRTwvdGV4dD48L3N2Zz4=';
@@ -1588,7 +1588,7 @@ const Header = () => {
             >
               <button 
                 ref={productButtonRef}
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 flex items-center"
+                className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 flex items-center cursor-pointer"
                 onClick={() => {
                   setIsProductDropdownOpen(!isProductDropdownOpen);
                   setIsSoftwareDropdownOpen(false);
@@ -1605,105 +1605,105 @@ const Header = () => {
               
               {isProductDropdownOpen && (
                 <div 
-                  className="absolute left-0 mt-8 w-[1050px] bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200"
+                  className="absolute  left-0 mt-8 w-[1050px] bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200 cursor-pointer"
                   onMouseEnter={handleProductMouseEnter}
                   onMouseLeave={handleProductMouseLeave}
                 >
-                  <div className="flex flex-nowrap gap-8 p-6 min-w-max">
+                  <div className="flex flex-nowrap gap-8 p-6 min-w-max ">
                     {/* Solutions Column */}
-                    <div className="flex-shrink-0 w-56">
-                      <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center">
+                    <div className="flex-shrink-0 w-56  ">
+                      <h3 className="font-bold text-gray-800 mb-3 text-sm cursor-pointer uppercase flex items-center">
                         <FiBox className="mr-2" /> Solutions
                       </h3>
                       <div className="space-y-2">
-                        <button onClick={() => handleNavClick('/ERPSolutions')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiGrid className="mr-2 text-blue-500" /> ERP (Corporate Solutions)
+                        <button onClick={() => handleNavClick('/ERPSolutions')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiGrid className="mr-2 cursor-pointer text-blue-500" /> ERP (Corporate Solutions)
                         </button>
-                        <button onClick={() => handleNavClick('/employee-manegement')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiUsers className="mr-2 text-blue-500" /> Employee Management
+                        <button onClick={() => handleNavClick('/employee-manegement')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiUsers className="mr-2 cursor-pointer text-blue-500" /> Employee Management
                         </button>
-                        <button onClick={() => handleNavClick('/accounting')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiDollarSign className="mr-2 text-blue-500" /> Accounting
+                        <button onClick={() => handleNavClick('/accounting')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiDollarSign className="mr-2 text-blue-500 cursor-pointer" /> Accounting
                         </button>
-                        <button onClick={() => handleNavClick('/inventory')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiLayers className="mr-2 text-blue-500" /> Stock & Inventory
+                        <button onClick={() => handleNavClick('/inventory')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiLayers className="mr-2 text-blue-500 cursor-pointer" /> Stock & Inventory
                         </button>
                         
-                        <button onClick={() => handleNavClick('/PayrollSoftware')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiClock className="mr-2 text-blue-500" /> Attendance & Payroll Software
+                        <button onClick={() => handleNavClick('/PayrollSoftware')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiClock className="mr-2 text-blue-500 cursor-pointer" /> Attendance & Payroll Software
                         </button>
-                        <button onClick={() => handleNavClick('/sales-automation')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiTruck className="mr-2 text-blue-500" /> Sale Force Automation
+                        <button onClick={() => handleNavClick('/sales-automation')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiTruck className="mr-2 text-blue-500 cursor-pointer" /> Sale Force Automation
                         </button>
                       </div>
                     </div>
 
                     {/* Software Column */}
                     <div className="flex-shrink-0 w-56">
-                      <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center">
+                      <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center cursor-pointer">
                         <FiFileText className="mr-2" /> Software
                       </h3>
                       <div className="space-y-2">
-                        <button onClick={() => handleNavClick('/billing')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiFileText className="mr-2 text-green-500" /> Billing Software
+                        <button onClick={() => handleNavClick('/billing')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiFileText className="mr-2 text-green-500 cursor-pointer" /> Billing Software
                         </button>
-                        <button onClick={() => handleNavClick('/gst-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiPercent className="mr-2 text-green-500" /> GST Software
+                        <button onClick={() => handleNavClick('/gst-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiPercent className="mr-2 text-green-500 cursor-pointer" /> GST Software
                         </button>
-                        <button onClick={() => handleNavClick('/inventory-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiDatabase className="mr-2 text-green-500" /> Inventory Software
+                        <button onClick={() => handleNavClick('/inventory-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiDatabase className="mr-2 text-green-500 cursor-pointer" /> Inventory Software
                         </button>
-                        <button onClick={() => handleNavClick('/invoice-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiCreditCard className="mr-2 text-green-500" /> Invoice Software
+                        <button onClick={() => handleNavClick('/invoice-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiCreditCard className="mr-2 text-green-500 cursor-pointer" /> Invoice Software
                         </button>
-                        <button onClick={() => handleNavClick('/accountingsoftware')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiDollarSign className="mr-2 text-green-500" /> Accounting Software
+                        <button onClick={() => handleNavClick('/accountingsoftware')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiDollarSign className="mr-2 text-green-500 cursor-pointer" /> Accounting Software
                         </button>
                       </div>
                     </div>
 
                     {/* Mobile Apps Column */}
                     <div className="flex-shrink-0 w-56">
-                      <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center">
+                      <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center cursor-pointer">
                         <FiSmartphone className="mr-2" /> Mobile Apps
                       </h3>
                       <div className="space-y-2">
-                        <button onClick={() => handleNavClick('/e-owner-app')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiUserCheck className="mr-2 text-purple-500" /> e-Owner App
+                        <button onClick={() => handleNavClick('/e-owner-app')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiUserCheck className="mr-2 text-purple-500 cursor-pointer" /> e-Owner App
                         </button>
-                        <button onClick={() => handleNavClick('/e-retailer-app')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiShoppingBag className="mr-2 text-purple-500" /> e-Retailer App
+                        <button onClick={() => handleNavClick('/e-retailer-app')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiShoppingBag className="mr-2 text-purple-500 cursor-pointer" /> e-Retailer App
                         </button>
-                        <button onClick={() => handleNavClick('/e-attendance-app')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiClock className="mr-2 text-purple-500" /> e-Attendance App
+                        <button onClick={() => handleNavClick('/e-attendance-app')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiClock className="mr-2 text-purple-500 cursor-pointer" /> e-Attendance App
                         </button>
-                        <button onClick={() => handleNavClick('/e-reporting-app')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiBarChart2 className="mr-2 text-purple-500" /> e-Reporting App
+                        <button onClick={() => handleNavClick('/e-reporting-app')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiBarChart2 className="mr-2 text-purple-500 cursor-pointer" /> e-Reporting App
                         </button>
                       </div>
                     </div>
 
                     {/* Other Services Column */}
                     <div className="flex-shrink-0 w-56">
-                      <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center">
+                      <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center cursor-pointer">
                         <FiAward className="mr-2" /> Other Services
                       </h3>
                       <div className="space-y-2">
-                        <button onClick={() => handleNavClick('/gps-tracking')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiMap className="mr-2 text-orange-500" /> GPS Tracking
+                        <button onClick={() => handleNavClick('/gps-tracking')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiMap className="mr-2 text-orange-500 cursor-pointer" /> GPS Tracking
                         </button>
-                        <button onClick={() => handleNavClick('/email-marketing')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiMail className="mr-2 text-orange-500" /> Email Marketing
+                        <button onClick={() => handleNavClick('/email-marketing')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiMail className="mr-2 text-orange-500 cursor-pointer" /> Email Marketing
                         </button>
                      
-                        <button onClick={() => handleNavClick('/corporate-email')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiMail className="mr-2 text-orange-500" /> Corporate Email Account
+                        <button onClick={() => handleNavClick('/corporate-email')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiMail className="mr-2 text-orange-500 cursor-pointer" /> Corporate Email Account
                         </button>
-                        <button onClick={() => handleNavClick('/school-management')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiBook className="mr-2 text-orange-500" /> School Management System
+                        <button onClick={() => handleNavClick('/school-management')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiBook className="mr-2 text-orange-500 cursor-pointer" /> School Management System
                         </button>
-                        <button onClick={() => handleNavClick('/Transport-management')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiTruck className="mr-2 text-orange-500" /> Transport Management System
+                        <button onClick={() => handleNavClick('/Transport-management')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiTruck className="mr-2 text-orange-500 cursor-pointer" /> Transport Management System
                         </button>
                       </div>
                     </div>
@@ -1721,7 +1721,7 @@ const Header = () => {
             >
               <button 
                 ref={softwareButtonRef}
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 flex items-center"
+                className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 flex items-center cursor-pointer"
                 onClick={() => {
                   setIsSoftwareDropdownOpen(!isSoftwareDropdownOpen);
                   setIsProductDropdownOpen(false);
@@ -1738,94 +1738,94 @@ const Header = () => {
               
               {isSoftwareDropdownOpen && (
                 <div 
-                  className="absolute left-0 mt-8 w-[900px] bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200"
+                  className="absolute left-0 mt-8 w-[900px] bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200 cursor-pointer"
                   onMouseEnter={handleSoftwareMouseEnter}
                   onMouseLeave={handleSoftwareMouseLeave}
                 >
                   <div className="flex flex-nowrap gap-8 p-6 min-w-max">
                     {/* Retail & Shop Software Column */}
                     <div className="flex-shrink-0 w-64">
-                      <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center">
+                      <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center cursor-pointer">
                         <FiShoppingBag className="mr-2" /> Retail & Shop Software
                       </h3>
                       <div className="space-y-2">
-                        <button onClick={() => handleNavClick('/retail-chain')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiHome className="mr-2 text-blue-500" /> Retail Chain Software
+                        <button onClick={() => handleNavClick('/retail-chain')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiHome className="mr-2 text-blue-500 cursor-pointer" /> Retail Chain Software
                         </button>
-                        <button onClick={() => handleNavClick('/pharmacy-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiPackage className="mr-2 text-blue-500" /> Pharmacy Shop Software
+                        <button onClick={() => handleNavClick('/pharmacy-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiPackage className="mr-2 text-blue-500 cursor-pointer" /> Pharmacy Shop Software
                         </button>
-                        <button onClick={() => handleNavClick('/grocery-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiShoppingCart className="mr-2 text-blue-500" /> Grocery Shop Software
+                        <button onClick={() => handleNavClick('/grocery-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiShoppingCart className="mr-2 text-blue-500 cursor-pointer" /> Grocery Shop Software
                         </button>
-                        <button onClick={() => handleNavClick('/pos-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiCreditCard className="mr-2 text-blue-500" /> POS Software
+                        <button onClick={() => handleNavClick('/pos-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiCreditCard className="mr-2 text-blue-500 cursor-pointer" /> POS Software
                         </button>
-                        <button onClick={() => handleNavClick('/restaurant-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiCoffee className="mr-2 text-blue-500" /> Restaurant Software
+                        <button onClick={() => handleNavClick('/restaurant-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiCoffee className="mr-2 text-blue-500 cursor-pointer" /> Restaurant Software
                         </button>
-                        <button onClick={() => handleNavClick('/garment-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiShoppingBag className="mr-2 text-blue-500" /> Garment Software
+                        <button onClick={() => handleNavClick('/garment-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiShoppingBag className="mr-2 text-blue-500 cursor-pointer" /> Garment Software
                         </button>
                       </div>
                     </div>
 
                     {/* Distribution Software Column */}
                     <div className="flex-shrink-0 w-64">
-                      <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center">
+                      <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center cursor-pointer">
                         <FiTruck className="mr-2" /> Distribution Software
                       </h3>
                       <div className="space-y-2">
-                        <button onClick={() => handleNavClick('/distribution-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiTruck className="mr-2 text-green-500" /> Distribution Software
+                        <button onClick={() => handleNavClick('/distribution-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiTruck className="mr-2 text-green-500 cursor-pointer" /> Distribution Software
                         </button>
-                        <button onClick={() => handleNavClick('/pharma-distribution')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiPackage className="mr-2 text-green-500" /> Pharma Distribution Software
+                        <button onClick={() => handleNavClick('/pharma-distribution')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiPackage className="mr-2 text-green-500 cursor-pointer" /> Pharma Distribution Software
                         </button>
-                        <button onClick={() => handleNavClick('/fmcg-distribution')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiBox className="mr-2 text-green-500" /> FMCG Distribution Software
+                        <button onClick={() => handleNavClick('/fmcg-distribution')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiBox className="mr-2 text-green-500 cursor-pointer" /> FMCG Distribution Software
                         </button>
-                        <button onClick={() => handleNavClick('/mandi-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiMapPin className="mr-2 text-green-500" /> Mandi Software
+                        <button onClick={() => handleNavClick('/mandi-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiMapPin className="mr-2 text-green-500 cursor-pointer" /> Mandi Software
                         </button>
-                        <button onClick={() => handleNavClick('/wholesale-distribution')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiDatabase className="mr-2 text-green-500" /> Wholesale Distribution Software
+                        <button onClick={() => handleNavClick('/wholesale-distribution')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiDatabase className="mr-2 text-green-500 cursor-pointer" /> Wholesale Distribution Software
                         </button>
-                        <button onClick={() => handleNavClick('/warehouse-management')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiDatabase className="mr-2 text-green-500" /> Warehouse Management Software
+                        <button onClick={() => handleNavClick('/warehouse-management')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiDatabase className="mr-2 text-green-500 cursor-pointer" /> Warehouse Management Software
                         </button>
                       </div>
                     </div>
 
                     {/* Industry & Manufacturing Software Column */}
                     <div className="flex-shrink-0 w-64">
-                      <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center">
+                      <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center cursor-pointer">
                         <FiLayers className="mr-2" /> Industry & Manufacturing
                       </h3>
                       <div className="space-y-2">
-                        <button onClick={() => handleNavClick('/automobile-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiTruck className="mr-2 text-purple-500" /> Automobile Software
+                        <button onClick={() => handleNavClick('/automobile-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiTruck className="mr-2 text-purple-500 cursor-pointer" /> Automobile Software
                         </button>
-                        <button onClick={() => handleNavClick('/supply-chain')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiLink className="mr-2 text-purple-500" /> Supply Chain Management
+                        <button onClick={() => handleNavClick('/supply-chain')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiLink className="mr-2 text-purple-500 cursor-pointer" /> Supply Chain Management
                         </button>
-                        <button onClick={() => handleNavClick('/manufacturing-management')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiSettings className="mr-2 text-purple-500" /> Manufacturing Management Software
+                        <button onClick={() => handleNavClick('/manufacturing-management')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiSettings className="mr-2 text-purple-500 cursor-pointer" /> Manufacturing Management Software
                         </button>
-                        <button onClick={() => handleNavClick('/erp-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiServer className="mr-2 text-purple-500" /> All in One ERP Software
+                        <button onClick={() => handleNavClick('/erp-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiServer className="mr-2 text-purple-500 cursor-pointer" /> All in One ERP Software
                         </button>
-                        <button onClick={() => handleNavClick('/process-manufacturing')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiSettings className="mr-2 text-purple-500" /> Process Manufacturing Software
+                        <button onClick={() => handleNavClick('/process-manufacturing')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiSettings className="mr-2 text-purple-500 cursor-pointer" /> Process Manufacturing Software
                         </button>
-                        <button onClick={() => handleNavClick('/food-beverage')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiCoffee className="mr-2 text-purple-500" /> Food & Beverage Industry Software
+                        <button onClick={() => handleNavClick('/food-beverage')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiCoffee className="mr-2 text-purple-500 cursor-pointer" /> Food & Beverage Industry Software
                         </button>
-                        <button onClick={() => handleNavClick('/assembling-industry')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiSettings className="mr-2 text-purple-500" /> Assembling Industry Software
+                        <button onClick={() => handleNavClick('/assembling-industry')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiSettings className="mr-2 text-purple-500 cursor-pointer" /> Assembling Industry Software
                         </button>
-                        <button onClick={() => handleNavClick('/textile-industry')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                          <FiShoppingBag className="mr-2 text-purple-500" /> Textile Industry Software
+                        <button onClick={() => handleNavClick('/textile-industry')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                          <FiShoppingBag className="mr-2 text-purple-500 cursor-pointer" /> Textile Industry Software
                         </button>
                       </div>
                     </div>
@@ -1843,7 +1843,7 @@ const Header = () => {
             >
               <button 
                 ref={resourcesButtonRef}
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 flex items-center"
+                className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 flex items-center cursor-pointer"
                 onClick={() => {
                   setIsResourcesDropdownOpen(!isResourcesDropdownOpen);
                   setIsProductDropdownOpen(false);
@@ -1860,26 +1860,26 @@ const Header = () => {
               
               {isResourcesDropdownOpen && (
                 <div 
-                  className="absolute left-0 mt-8 w-64 bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200"
+                  className="absolute left-0 mt-8 w-64 bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200 cursor-pointer"
                   onMouseEnter={handleResourcesMouseEnter}
                   onMouseLeave={handleResourcesMouseLeave}
                 >
                   <div className="space-y-3 p-4">
-                    <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center">
+                    <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase flex items-center cursor-pointer">
                       <FiBookOpen className="mr-2" /> Resources
                     </h3>
                     <div className="space-y-2">
-                      <button onClick={() => handleNavClick('/resources/question-and-answer')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                        <FiHelpCircle className="mr-2 text-blue-500" /> Question and Answer
+                      <button onClick={() => handleNavClick('/resources/question-and-answer')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                        <FiHelpCircle className="mr-2 text-blue-500 cursor-pointer" /> Question and Answer
                       </button>
-                      <button onClick={() => handleNavClick('/resources/training-and-certification')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                        <FiBookOpen className="mr-2 text-blue-500" /> Training and Certification
+                      <button onClick={() => handleNavClick('/resources/training-and-certification')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                        <FiBookOpen className="mr-2 text-blue-500 cursor-pointer" /> Training and Certification
                       </button>
-                      <button onClick={() => handleNavClick('/resources/user-and-deployment')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                        <FiUser className="mr-2 text-blue-500" /> User and Deployment
+                      <button onClick={() => handleNavClick('/resources/user-and-deployment')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                        <FiUser className="mr-2 text-blue-500 cursor-pointer" /> User and Deployment
                       </button>
-                      <button onClick={() => handleNavClick('/resources/product-brochure')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors">
-                        <FiFile className="mr-2 text-blue-500" /> Product Brochure
+                      <button onClick={() => handleNavClick('/resources/product-brochure')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 px-2 rounded hover:bg-gray-50 transition-colors cursor-pointer">
+                        <FiFile className="mr-2 text-blue-500 cursor-pointer" /> Product Brochure
                       </button>
                     </div>
                   </div>
@@ -1890,7 +1890,7 @@ const Header = () => {
             {/* Other navigation links */}
             <a 
               href="https://domain.cloudsat.in" 
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300"
+              className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 cursor-pointer"
               onClick={scrollToTop}
             >
               Hosting
@@ -1898,19 +1898,19 @@ const Header = () => {
 
             <button 
               onClick={() => handleNavClick('/builder-erp')}
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300"
+              className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 cursor-pointer"
             >
               BuilderERP
             </button>
             <button 
               onClick={() => handleNavClick('/pricing')}
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300"
+              className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 cursor-pointer"
             >
               Pricing
             </button>
             <button 
               onClick={() => handleNavClick('/partners')}
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300"
+              className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 cursor-pointer"
             >
               Partners
             </button>
@@ -1929,7 +1929,7 @@ const Header = () => {
                   setIsResourcesDropdownOpen(false);
                   setIsUserDropdownOpen(false);
                 }}
-                className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-300"
+                className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-300 cursor-pointer"
                 onMouseEnter={handleLogoMouseEnter}
               >
                 <PiDotsNineBold className="h-6 w-6 text-gray-700 hover:text-blue-600 cursor-pointer transition-colors duration-300" />
@@ -1939,12 +1939,12 @@ const Header = () => {
             </div>
 
             {/* Cart Icon - desktop */}
-            <button onClick={() => handleNavClick('/cartpage')}>  
+            <button onClick={() => handleNavClick('/cartpage')} className="cursor-pointer">  
               <div className="hidden md:block relative group">
-                <button className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-300">
+                <button className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-300 cursor-pointer">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-gray-700 group-hover:text-blue-600 transition-colors duration-300"
+                    className="h-6 w-6 text-gray-700 group-hover:text-blue-600 transition-colors duration-300 cursor-pointer"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -1957,7 +1957,7 @@ const Header = () => {
                     />
                   </svg>
                 </button>
-                <span className="absolute -top-1 -right-1 bg-[#ff4081] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                <span className="absolute -top-1 -right-1 bg-[#ff4081] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 cursor-pointer">
                   3
                 </span>
               </div>
@@ -1967,7 +1967,7 @@ const Header = () => {
             <div className="hidden md:flex items-center space-x-4">
               <button 
                 onClick={() => handleNavClick('/bookdemo')}
-                className="bg-[#3f51b5] hover:bg-[#303f9f] text-white px-4 py-2 rounded-md transition-colors duration-300 transform hover:-translate-y-0.5 shadow-md"
+                className="bg-[#3f51b5] hover:bg-[#303f9f] text-white px-4 py-2 rounded-md transition-colors duration-300 transform hover:-translate-y-0.5 shadow-md cursor-pointer"
               >
                 Book a Demo
               </button>
@@ -1977,7 +1977,7 @@ const Header = () => {
                 <>
                   <button 
                     onClick={handleLogin}
-                    className="bg-[#ff4081] hover:bg-[#f50057] text-white px-4 py-2 rounded-md transition-colors duration-300 transform hover:-translate-y-0.5 shadow-md"
+                    className="bg-[#ff4081] hover:bg-[#f50057] text-white px-4 py-2 rounded-md transition-colors duration-300 transform hover:-translate-y-0.5 shadow-md cursor-pointer"
                   >
                     Login
                   </button>
@@ -1994,7 +1994,7 @@ const Header = () => {
                       setIsLogoDropdownOpen(false);
                       setIsResourcesDropdownOpen(false);
                     }}
-                    className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-300 flex items-center"
+                    className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-300 flex items-center cursor-pointer"
                     onMouseEnter={handleUserMouseEnter}
                   >
                     <FiUser className="h-6 w-6 text-gray-700 hover:text-blue-600 cursor-pointer transition-colors duration-300" />
@@ -2012,11 +2012,11 @@ const Header = () => {
             <div className="relative">
               <button 
                 onClick={() => handleNavClick('/cartpage')}
-                className="p-2 rounded-full hover:bg-gray-100"
+                className="p-2 rounded-full hover:bg-gray-100 cursor-pointer"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-gray-700"
+                  className="h-6 w-6 text-gray-700 cursor-pointer"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -2029,18 +2029,18 @@ const Header = () => {
                   />
                 </svg>
               </button>
-              <span className="absolute -top-1 -right-1 bg-[#ff4081] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 bg-[#ff4081] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center cursor-pointer">
                 3
               </span>
             </div>
 
             {/* Hamburger menu button */}
             <button
-              className="text-gray-700 focus:outline-none"
+              className="text-gray-700 focus:outline-none cursor-pointer"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <svg
-                className="w-6 h-6"
+                className="w-6 h-6 cursor-pointer"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -2064,93 +2064,93 @@ const Header = () => {
               {/* Product dropdown for mobile */}
               <div className="border-b border-gray-100 pb-2">
                 <button 
-                  className="flex justify-between items-center w-full text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300"
+                  className="flex justify-between items-center w-full text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300 cursor-pointer"
                   onClick={() => setIsProductDropdownOpen(!isProductDropdownOpen)}
                 >
                   <span>Product</span>
-                  <svg className={`w-4 h-4 transform transition-transform ${isProductDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className={`w-4 h-4 transform transition-transform ${isProductDropdownOpen ? 'rotate-180' : ''} cursor-pointer`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
                 
                 {isProductDropdownOpen && (
                   <div className="pl-4 mt-2 space-y-3">
-                    <h3 className="font-bold text-gray-800 text-sm uppercase flex items-center">
+                    <h3 className="font-bold text-gray-800 text-sm uppercase flex items-center cursor-pointer">
                       <FiBox className="mr-2" /> Solutions
                     </h3>
-                    <button onClick={() => handleNavClick('/ERPSolutions')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiGrid className="mr-2 text-blue-500" /> ERP (Corporate Solutions)
+                    <button onClick={() => handleNavClick('/ERPSolutions')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiGrid className="mr-2 text-blue-500 cursor-pointer" /> ERP (Corporate Solutions)
                     </button>
-                    <button onClick={() => handleNavClick('/employee-management')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiUsers className="mr-2 text-blue-500" /> Employee Management
+                    <button onClick={() => handleNavClick('/employee-management')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiUsers className="mr-2 text-blue-500 cursor-pointer" /> Employee Management
                     </button>
-                    <button onClick={() => handleNavClick('/accounting')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiDollarSign className="mr-2 text-blue-500" /> Accounting
+                    <button onClick={() => handleNavClick('/accounting')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiDollarSign className="mr-2 text-blue-500 cursor-pointer" /> Accounting
                     </button>
-                    <button onClick={() => handleNavClick('/inventory')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiLayers className="mr-2 text-blue-500" /> Stock & Inventory
+                    <button onClick={() => handleNavClick('/inventory')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiLayers className="mr-2 text-blue-500 cursor-pointer" /> Stock & Inventory
                     </button>
                   
-                    <button onClick={() => handleNavClick('/PayrollSoftware')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiClock className="mr-2 text-blue-500" /> Attendance & Payroll Software
+                    <button onClick={() => handleNavClick('/PayrollSoftware')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiClock className="mr-2 text-blue-500 cursor-pointer" /> Attendance & Payroll Software
                     </button>
-                    <button onClick={() => handleNavClick('/sales-automation')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiTruck className="mr-2 text-blue-500" /> Sale Force Automation
+                    <button onClick={() => handleNavClick('/sales-automation')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiTruck className="mr-2 text-blue-500 cursor-pointer" /> Sale Force Automation
                     </button>
                     
-                    <h3 className="font-bold text-gray-800 text-sm uppercase mt-3 flex items-center">
+                    <h3 className="font-bold text-gray-800 text-sm uppercase mt-3 flex items-center cursor-pointer">
                       <FiFileText className="mr-2" /> Software
                     </h3>
-                    <button onClick={() => handleNavClick('/billing')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiFileText className="mr-2 text-green-500" /> Billing Software
+                    <button onClick={() => handleNavClick('/billing')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiFileText className="mr-2 text-green-500 cursor-pointer" /> Billing Software
                     </button>
-                    <button onClick={() => handleNavClick('/gst-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiPercent className="mr-2 text-green-500" /> GST Software
+                    <button onClick={() => handleNavClick('/gst-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiPercent className="mr-2 text-green-500 cursor-pointer" /> GST Software
                     </button>
-                    <button onClick={() => handleNavClick('/inventory-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiDatabase className="mr-2 text-green-500" /> Inventory Software
+                    <button onClick={() => handleNavClick('/inventory-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiDatabase className="mr-2 text-green-500 cursor-pointer" /> Inventory Software
                     </button>
-                    <button onClick={() => handleNavClick('/invoice-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiCreditCard className="mr-2 text-green-500" /> Invoice Software
+                    <button onClick={() => handleNavClick('/invoice-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiCreditCard className="mr-2 text-green-500 cursor-pointer" /> Invoice Software
                     </button>
-                    <button onClick={() => handleNavClick('/accountingsoftware')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiDollarSign className="mr-2 text-green-500" /> Accounting Software
+                    <button onClick={() => handleNavClick('/accountingsoftware')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiDollarSign className="mr-2 text-green-500 cursor-pointer" /> Accounting Software
                     </button>
                     
-                    <h3 className="font-bold text-gray-800 text-sm uppercase mt-3 flex items-center">
+                    <h3 className="font-bold text-gray-800 text-sm uppercase mt-3 flex items-center cursor-pointer">
                       <FiSmartphone className="mr-2" /> Mobile Apps
                     </h3>
-                    <button onClick={() => handleNavClick('/e-owner-app')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiUserCheck className="mr-2 text-purple-500" /> e-Owner App
+                    <button onClick={() => handleNavClick('/e-owner-app')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiUserCheck className="mr-2 text-purple-500 cursor-pointer" /> e-Owner App
                     </button>
-                    <button onClick={() => handleNavClick('/e-retailer-app')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiShoppingBag className="mr-2 text-purple-500" /> e-Retailer App
+                    <button onClick={() => handleNavClick('/e-retailer-app')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiShoppingBag className="mr-2 text-purple-500 cursor-pointer" /> e-Retailer App
                     </button>
-                    <button onClick={() => handleNavClick('/e-attendance-app')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiClock className="mr-2 text-purple-500" /> e-Attendance App
+                    <button onClick={() => handleNavClick('/e-attendance-app')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiClock className="mr-2 text-purple-500 cursor-pointer" /> e-Attendance App
                     </button>
-                    <button onClick={() => handleNavClick('/e-reporting-app')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiBarChart2 className="mr-2 text-purple-500" /> e-Reporting App
+                    <button onClick={() => handleNavClick('/e-reporting-app')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiBarChart2 className="mr-2 text-purple-500 cursor-pointer" /> e-Reporting App
                     </button>
                     
-                    <h3 className="font-bold text-gray-800 text-sm uppercase mt-3 flex items-center">
+                    <h3 className="font-bold text-gray-800 text-sm uppercase mt-3 flex items-center cursor-pointer">
                       <FiAward className="mr-2" /> Other Services
                     </h3>
-                    <button onClick={() => handleNavClick('/gps-tracking')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiMap className="mr-2 text-orange-500" /> GPS Tracking
+                    <button onClick={() => handleNavClick('/gps-tracking')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiMap className="mr-2 text-orange-500 cursor-pointer" /> GPS Tracking
                     </button>
-                    <button onClick={() => handleNavClick('/email-marketing')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiMail className="mr-2 text-orange-500" /> Email Marketing
+                    <button onClick={() => handleNavClick('/email-marketing')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiMail className="mr-2 text-orange-500 cursor-pointer" /> Email Marketing
                     </button>
                    
-                    <button onClick={() => handleNavClick('/corporate-email')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiMail className="mr-2 text-orange-500" /> Corporate Email Account
+                    <button onClick={() => handleNavClick('/corporate-email')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiMail className="mr-2 text-orange-500 cursor-pointer" /> Corporate Email Account
                     </button>
-                    <button onClick={() => handleNavClick('/school-management')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiBook className="mr-2 text-orange-500" /> School Management System
+                    <button onClick={() => handleNavClick('/school-management')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiBook className="mr-2 text-orange-500 cursor-pointer" /> School Management System
                     </button>
-                    <button onClick={() => handleNavClick('/Transport-management')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiTruck className="mr-2 text-orange-500" /> Transport Management System
+                    <button onClick={() => handleNavClick('/Transport-management')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiTruck className="mr-2 text-orange-500 cursor-pointer" /> Transport Management System
                     </button>
                   </div>
                 )}
@@ -2159,87 +2159,87 @@ const Header = () => {
               {/* Software dropdown for mobile */}
               <div className="border-b border-gray-100 pb-2">
                 <button 
-                  className="flex justify-between items-center w-full text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300"
+                  className="flex justify-between items-center w-full text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300 cursor-pointer"
                   onClick={() => setIsSoftwareDropdownOpen(!isSoftwareDropdownOpen)}
                 >
                   <span>Software</span>
-                  <svg className={`w-4 h-4 transform transition-transform ${isSoftwareDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className={`w-4 h-4 transform transition-transform ${isSoftwareDropdownOpen ? 'rotate-180' : ''} cursor-pointer`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
                 
                 {isSoftwareDropdownOpen && (
                   <div className="pl-4 mt-2 space-y-3">
-                    <h3 className="font-bold text-gray-800 text-sm uppercase flex items-center">
+                    <h3 className="font-bold text-gray-800 text-sm uppercase flex items-center cursor-pointer">
                       <FiShoppingBag className="mr-2" /> Retail & Shop Software
                     </h3>
-                    <button onClick={() => handleNavClick('/retail-chain')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiHome className="mr-2 text-blue-500" /> Retail Chain Software
+                    <button onClick={() => handleNavClick('/retail-chain')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiHome className="mr-2 text-blue-500 cursor-pointer" /> Retail Chain Software
                     </button>
-                    <button onClick={() => handleNavClick('/pharmacy-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiPackage className="mr-2 text-blue-500" /> Pharmacy Shop Software
+                    <button onClick={() => handleNavClick('/pharmacy-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiPackage className="mr-2 text-blue-500 cursor-pointer" /> Pharmacy Shop Software
                     </button>
-                    <button onClick={() => handleNavClick('/grocery-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiShoppingCart className="mr-2 text-blue-500" /> Grocery Shop Software
+                    <button onClick={() => handleNavClick('/grocery-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiShoppingCart className="mr-2 text-blue-500 cursor-pointer" /> Grocery Shop Software
                     </button>
-                    <button onClick={() => handleNavClick('/pos-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiCreditCard className="mr-2 text-blue-500" /> POS Software
+                    <button onClick={() => handleNavClick('/pos-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiCreditCard className="mr-2 text-blue-500 cursor-pointer" /> POS Software
                     </button>
-                    <button onClick={() => handleNavClick('/restaurant-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiCoffee className="mr-2 text-blue-500" /> Restaurant Software
+                    <button onClick={() => handleNavClick('/restaurant-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiCoffee className="mr-2 text-blue-500 cursor-pointer" /> Restaurant Software
                     </button>
-                    <button onClick={() => handleNavClick('/garment-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiShoppingBag className="mr-2 text-blue-500" /> Garment Software
+                    <button onClick={() => handleNavClick('/garment-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiShoppingBag className="mr-2 text-blue-500 cursor-pointer" /> Garment Software
                     </button>
                     
-                    <h3 className="font-bold text-gray-800 text-sm uppercase mt-3 flex items-center">
+                    <h3 className="font-bold text-gray-800 text-sm uppercase mt-3 flex items-center cursor-pointer">
                       <FiTruck className="mr-2" /> Distribution Software
                     </h3>
-                    <button onClick={() => handleNavClick('/distribution-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiTruck className="mr-2 text-green-500" /> Distribution Software
+                    <button onClick={() => handleNavClick('/distribution-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiTruck className="mr-2 text-green-500 cursor-pointer" /> Distribution Software
                     </button>
-                    <button onClick={() => handleNavClick('/pharma-distribution')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiPackage className="mr-2 text-green-500" /> Pharma Distribution Software
+                    <button onClick={() => handleNavClick('/pharma-distribution')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiPackage className="mr-2 text-green-500 cursor-pointer" /> Pharma Distribution Software
                     </button>
-                    <button onClick={() => handleNavClick('/fmcg-distribution')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiBox className="mr-2 text-green-500" /> FMCG Distribution Software
+                    <button onClick={() => handleNavClick('/fmcg-distribution')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiBox className="mr-2 text-green-500 cursor-pointer" /> FMCG Distribution Software
                     </button>
-                    <button onClick={() => handleNavClick('/mandi-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiMapPin className="mr-2 text-green-500" /> Mandi Software
+                    <button onClick={() => handleNavClick('/mandi-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiMapPin className="mr-2 text-green-500 cursor-pointer" /> Mandi Software
                     </button>
-                    <button onClick={() => handleNavClick('/wholesale-distribution')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiDatabase className="mr-2 text-green-500" /> Wholesale Distribution Software
+                    <button onClick={() => handleNavClick('/wholesale-distribution')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiDatabase className="mr-2 text-green-500 cursor-pointer" /> Wholesale Distribution Software
                     </button>
-                    <button onClick={() => handleNavClick('/warehouse-management')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiDatabase className="mr-2 text-green-500" /> Warehouse Management Software
+                    <button onClick={() => handleNavClick('/warehouse-management')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiDatabase className="mr-2 text-green-500 cursor-pointer" /> Warehouse Management Software
                     </button>
                     
-                    <h3 className="font-bold text-gray-800 text-sm uppercase mt-3 flex items-center">
+                    <h3 className="font-bold text-gray-800 text-sm uppercase mt-3 flex items-center cursor-pointer">
                       <FiLayers className="mr-2" /> Industry & Manufacturing
                     </h3>
-                    <button onClick={() => handleNavClick('/automobile-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiTruck className="mr-2 text-purple-500" /> Automobile Software
+                    <button onClick={() => handleNavClick('/automobile-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiTruck className="mr-2 text-purple-500 cursor-pointer" /> Automobile Software
                     </button>
-                    <button onClick={() => handleNavClick('/supply-chain')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiLink className="mr-2 text-purple-500" /> Supply Chain Management
+                    <button onClick={() => handleNavClick('/supply-chain')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiLink className="mr-2 text-purple-500 cursor-pointer" /> Supply Chain Management
                     </button>
-                    <button onClick={() => handleNavClick('/manufacturing-management')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiSettings className="mr-2 text-purple-500" /> Manufacturing Management Software
+                    <button onClick={() => handleNavClick('/manufacturing-management')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiSettings className="mr-2 text-purple-500 cursor-pointer" /> Manufacturing Management Software
                     </button>
-                    <button onClick={() => handleNavClick('/erp-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiServer className="mr-2 text-purple-500" /> All in One ERP Software
+                    <button onClick={() => handleNavClick('/erp-software')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiServer className="mr-2 text-purple-500 cursor-pointer" /> All in One ERP Software
                     </button>
-                    <button onClick={() => handleNavClick('/process-manufacturing')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiSettings className="mr-2 text-purple-500" /> Process Manufacturing Software
+                    <button onClick={() => handleNavClick('/process-manufacturing')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiSettings className="mr-2 text-purple-500 cursor-pointer" /> Process Manufacturing Software
                     </button>
-                    <button onClick={() => handleNavClick('/food-beverage')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiCoffee className="mr-2 text-purple-500" /> Food & Beverage Industry Software
+                    <button onClick={() => handleNavClick('/food-beverage')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiCoffee className="mr-2 text-purple-500 cursor-pointer" /> Food & Beverage Industry Software
                     </button>
-                    <button onClick={() => handleNavClick('/assembling-industry')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiSettings className="mr-2 text-purple-500" /> Assembling Industry Software
+                    <button onClick={() => handleNavClick('/assembling-industry')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiSettings className="mr-2 text-purple-500 cursor-pointer" /> Assembling Industry Software
                     </button>
-                    <button onClick={() => handleNavClick('/textile-industry')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiShoppingBag className="mr-2 text-purple-500" /> Textile Industry Software
+                    <button onClick={() => handleNavClick('/textile-industry')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiShoppingBag className="mr-2 text-purple-500 cursor-pointer" /> Textile Industry Software
                     </button>
                   </div>
                 )}
@@ -2248,28 +2248,28 @@ const Header = () => {
               {/* Resources dropdown for mobile */}
               <div className="border-b border-gray-100 pb-2">
                 <button 
-                  className="flex justify-between items-center w-full text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300"
+                  className="flex justify-between items-center w-full text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300 cursor-pointer"
                   onClick={() => setIsResourcesDropdownOpen(!isResourcesDropdownOpen)}
                 >
                   <span>Resources</span>
-                  <svg className={`w-4 h-4 transform transition-transform ${isResourcesDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className={`w-4 h-4 transform transition-transform ${isResourcesDropdownOpen ? 'rotate-180' : ''} cursor-pointer`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
                 
                 {isResourcesDropdownOpen && (
                   <div className="pl-4 mt-2 space-y-3">
-                    <button onClick={() => handleNavClick('/resources/question-and-answer')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiHelpCircle className="mr-2 text-blue-500" /> Question and Answer
+                    <button onClick={() => handleNavClick('/resources/question-and-answer')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiHelpCircle className="mr-2 text-blue-500 cursor-pointer" /> Question and Answer
                     </button>
-                    <button onClick={() => handleNavClick('/resources/training-and-certification')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiBookOpen className="mr-2 text-blue-500" /> Training and Certification
+                    <button onClick={() => handleNavClick('/resources/training-and-certification')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiBookOpen className="mr-2 text-blue-500 cursor-pointer" /> Training and Certification
                     </button>
-                    <button onClick={() => handleNavClick('/resources/user-and-deployment')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiUser className="mr-2 text-blue-500" /> User and Deployment
+                    <button onClick={() => handleNavClick('/resources/user-and-deployment')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiUser className="mr-2 text-blue-500 cursor-pointer" /> User and Deployment
                     </button>
-                    <button onClick={() => handleNavClick('/resources/product-brochure')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1">
-                      <FiFile className="mr-2 text-blue-500" /> Product Brochure
+                    <button onClick={() => handleNavClick('/resources/product-brochure')} className="flex items-center w-full text-left text-gray-700 hover:text-blue-600 text-sm py-1 cursor-pointer">
+                      <FiFile className="mr-2 text-blue-500 cursor-pointer" /> Product Brochure
                     </button>
                   </div>
                 )}
@@ -2281,25 +2281,25 @@ const Header = () => {
                   scrollToTop();
                   window.open('https://domain.cloudsat.in', '_blank');
                 }}
-                className="text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300 border-b border-gray-100 text-left"
+                className="text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300 border-b border-gray-100 text-left cursor-pointer"
               >
                 Hosting
               </button>
               <button 
                 onClick={() => handleNavClick('/builder-erp')}
-                className="text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300 border-b border-gray-100 text-left"
+                className="text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300 border-b border-gray-100 text-left cursor-pointer"
               >
                 BuilderERP
               </button>
               <button 
                 onClick={() => handleNavClick('/pricing')}
-                className="text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300 border-b border-gray-100 text-left"
+                className="text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300 border-b border-gray-100 text-left cursor-pointer"
               >
                 Pricing
               </button>
               <button 
                 onClick={() => handleNavClick('/partners')}
-                className="text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300 border-b border-gray-100 text-left"
+                className="text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300 border-b border-gray-100 text-left cursor-pointer"
               >
                 Partners
               </button>
@@ -2307,11 +2307,11 @@ const Header = () => {
               {/* Logo dropdown in mobile menu */}
               <div className="border-b border-gray-100 pb-2">
                 <button 
-                  className="flex justify-between items-center w-full text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300"
+                  className="flex justify-between items-center w-full text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300 cursor-pointer"
                   onClick={() => setIsLogoDropdownOpen(!isLogoDropdownOpen)}
                 >
                   <span>Our Brands</span>
-                  <svg className={`w-4 h-4 transform transition-transform ${isLogoDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className={`w-4 h-4 transform transition-transform ${isLogoDropdownOpen ? 'rotate-180' : ''} cursor-pointer`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
@@ -2346,7 +2346,7 @@ const Header = () => {
             <div className="mt-4 space-y-3 pt-4 border-t border-gray-200">
               <button 
                 onClick={() => handleNavClick('/bookdemo')}
-                className="w-full bg-[#3f51b5] hover:bg-[#303f9f] text-white px-4 py-2 rounded-md transition-colors duration-300"
+                className="w-full bg-[#3f51b5] hover:bg-[#303f9f] text-white px-4 py-2 rounded-md transition-colors duration-300 cursor-pointer"
               >
                 Book a Demo
               </button>
@@ -2356,7 +2356,7 @@ const Header = () => {
                 <>
                   <button 
                     onClick={handleLogin}
-                    className="w-full bg-[#ff4081] hover:bg-[#f50057] text-white px-4 py-2 rounded-md transition-colors duration-300"
+                    className="w-full bg-[#ff4081] hover:bg-[#f50057] text-white px-4 py-2 rounded-md transition-colors duration-300 cursor-pointer"
                   >
                     Login
                   </button>
@@ -2365,25 +2365,25 @@ const Header = () => {
                 <div className="space-y-2">
                   <button 
                     onClick={() => handleNavClick('/dashboard')}
-                    className="block w-full text-center bg-blue-100 hover:bg-blue-200 text-blue-700 px-4 py-2 rounded-md transition-colors duration-300"
+                    className="block w-full text-center bg-blue-100 hover:bg-blue-200 text-blue-700 px-4 py-2 rounded-md transition-colors duration-300 cursor-pointer"
                   >
                     Dashboard
                   </button>
                   <button 
                     onClick={() => handleNavClick('/profile')}
-                    className="block w-full text-center bg-green-100 hover:bg-green-200 text-green-700 px-4 py-2 rounded-md transition-colors duration-300"
+                    className="block w-full text-center bg-green-100 hover:bg-green-200 text-green-700 px-4 py-2 rounded-md transition-colors duration-300 cursor-pointer"
                   >
                     Profile
                   </button>
                   <button 
                     onClick={() => handleNavClick('/settings')}
-                    className="block w-full text-center bg-purple-100 hover:bg-purple-200 text-purple-700 px-4 py-2 rounded-md transition-colors duration-300"
+                    className="block w-full text-center bg-purple-100 hover:bg-purple-200 text-purple-700 px-4 py-2 rounded-md transition-colors duration-300 cursor-pointer"
                   >
                     Settings
                   </button>
                   <button 
                     onClick={handleLogout}
-                    className="w-full bg-red-100 hover:bg-red-200 text-red-700 px-4 py-2 rounded-md transition-colors duration-300"
+                    className="w-full bg-red-100 hover:bg-red-200 text-red-700 px-4 py-2 rounded-md transition-colors duration-300 cursor-pointer"
                   >
                     Logout
                   </button>

@@ -116,7 +116,7 @@ const BenefitsSection = () => {
               {products.map((product, index) => (
                 <button
                   key={index}
-                  className={`navbutton my-1 py-3 px-4 text-left rounded-lg transition-all w-full ${
+                  className={`navbutton my-1 py-3 px-4 text-left rounded-lg  transition-all w-full cursor-pointer ${
                     hoveredData && hoveredData.productName === product.productName
                       ? 'bg-blue-600 text-white shadow-lg'
                       : 'bg-gray-100 text-gray-800 hover:bg-blue-100'
@@ -138,14 +138,14 @@ const BenefitsSection = () => {
             <div className="stepbox bg-gradient-to-r from-blue-600 to-blue-800 p-6 rounded-xl shadow-lg h-96 flex flex-col justify-center">
               {hoveredData ? (
                 <div className="flex flex-col md:flex-row items-center h-full">
-                  <div className="w-full md:w-7/12 pr-0 md:pr-6">
+                  <div className="w-full md:w-7/12 pr-0 md:pr-6 ">
                     <h3 className="text-2xl font-semibold text-white mb-4">
                       {hoveredData.productName}
                     </h3>
                     <p className="text-blue-100 text-lg leading-relaxed">
                       {hoveredData.description}
                     </p>
-                    <button className="mt-6 bg-white text-blue-600 hover:bg-blue-50 font-medium py-2 px-6 rounded-lg transition-colors">
+                    <button className="mt-6 bg-white text-blue-600 hover:bg-blue-50 font-medium py-2 px-6 rounded-lg transition-colors cursor-pointer">
                       Learn More
                     </button>
                   </div>

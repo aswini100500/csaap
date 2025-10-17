@@ -11,7 +11,7 @@ const CloudBasedTab = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-center">
           <div className="w-full md:w-1/2 lg:w-5/12 mb-8 md:mb-0 md:pr-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 ">
               What is <span className="text-blue-600">Cloud Based Accounting Software </span> for Your Business?
             </h1>
             <p className="text-gray-700 mb-6">

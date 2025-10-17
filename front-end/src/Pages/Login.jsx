@@ -288,6 +288,90 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate, Navigate } from 'react-router-dom';
 
+// Enhanced subdomain detection utility
+const detectSubdomain = () => {
+  const hostname = window.location.hostname;
+  const parts = hostname.split('.');
+  
+  // For local development
+  if (hostname.includes('localhost') || hostname.includes('127.0.0.1')) {
+    // Allow testing subdomains locally using localStorage
+    const testSubdomain = localStorage.getItem('testSubdomain');
+    return testSubdomain || 'main';
+  }
+  
+  // For production with subdomains
+  if (parts.length >= 3) {
+    const subdomain = parts[0];
+    // Skip common prefixes that shouldn't be treated as tenant subdomains
+    if (subdomain !== 'www' && subdomain !== 'api' && subdomain !== 'app') {
+      return subdomain;
+    }
+  }
+  
+  return 'main'; // Default for main domain
+};
+
+// Updated API config to use tenant subdomains
+const getApiConfig = () => {
+  const subdomain = detectSubdomain();
+  
+  let baseUrl, loginEndpoint;
+  
+  if (import.meta.env.MODE === 'development') {
+    // Local development - proxy handles the /api prefix
+    if (subdomain !== 'main') {
+      baseUrl = ''; // Proxy will handle /api/tenantuser/login
+      loginEndpoint = '/api/tenantuser/login';
+    } else {
+      baseUrl = ''; // Proxy will handle /api/login
+      loginEndpoint = '/api/login';
+    }
+  } else {
+    // Production configuration - use tenant subdomains
+    if (subdomain !== 'main') {
+      // For tenant subdomains: https://test1.csaap.com/api/tenantuser/login
+      baseUrl = `https://${subdomain}.csaap.com`;
+      loginEndpoint = '/api/tenantuser/login';
+    } else {
+      // For main domain: https://csaap.com/api/login
+      baseUrl = 'https://csaap.com';
+      loginEndpoint = '/api/login';
+    }
+  }
+  
+  return { baseUrl, loginEndpoint, subdomain };
+};
+
+// Alternative simpler approach with tenant subdomains
+const getApiConfigSimple = () => {
+  const subdomain = detectSubdomain();
+  
+  let baseUrl, loginEndpoint;
+  
+  if (import.meta.env.MODE === 'development') {
+    // Development - use proxy
+    baseUrl = '';
+    loginEndpoint = subdomain !== 'main' ? '/api/tenantuser/login' : '/api/login';
+  } else {
+    // Production - use tenant subdomains
+    if (subdomain !== 'main') {
+      baseUrl = `https://${subdomain}.csaap.com`;
+      loginEndpoint = '/api/tenantuser/login';
+    } else {
+      baseUrl = 'https://csaap.com';
+      loginEndpoint = '/api/login';
+    }
+  }
+  
+  return { 
+    baseUrl, 
+    loginEndpoint, 
+    fullUrl: `${baseUrl}${loginEndpoint}`,
+    subdomain 
+  };
+};
+
 const Login = () => {
   const [credentials, setCredentials] = useState({
     username: '',
@@ -298,52 +382,38 @@ const Login = () => {
   const [userType, setUserType] = useState('user');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState(null);
+  const [currentSubdomain, setCurrentSubdomain] = useState('main');
+  const [apiConfig, setApiConfig] = useState({
+    baseUrl: '',
+    loginEndpoint: '',
+    fullUrl: '',
+    subdomain: 'main'
+  });
   
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Detect and set current subdomain and API config
+    const config = getApiConfigSimple();
+    setApiConfig(config);
+    setCurrentSubdomain(config.subdomain);
+    
     // Set user type based on navigation state
     if (location.state?.userType) {
       setUserType(location.state.userType);
     }
+
+    // Check for existing authentication with subdomain validation
+    const token = localStorage.getItem('authToken');
+    const storedUserData = localStorage.getItem('userData');
+    const storedSubdomain = localStorage.getItem('currentSubdomain');
+    
+    if (token && storedUserData && storedSubdomain === config.subdomain) {
+      setUserData(JSON.parse(storedUserData));
+      setIsLoggedIn(true);
+    }
   }, [location]);
-
-  // Dynamic API URL function
-  const getApiBaseUrl = () => {
-    const host = window.location.hostname;
-    const parts = host.split('.');
-    
-    // For local development
-    if (host.includes('localhost') || host.includes('127.0.0.1')) {
-      return 'https://api.csaap.com'; // or 'http://localhost:5000' for local API
-    }
-    
-    // For production with subdomains like test3.csaap.com, demo.csaap.com, etc.
-    if (parts.length >= 3) {
-      const subdomain = parts[0];
-      // Skip common prefixes that shouldn't be treated as tenant subdomains
-      if (subdomain !== 'www' && subdomain !== 'api' && subdomain !== 'csaap') {
-        return `https://${subdomain}.csaap.com/api/tenantuser`;
-      }
-    }
-    
-    // Default API URL for main domain (www.csaap.com, csaap.com)
-    return 'https://api.csaap.com';
-  };
-
-  // Get current subdomain for API requests
-  const getCurrentSubdomain = () => {
-    const host = window.location.hostname;
-    const parts = host.split('.');
-    if (parts.length >= 3) {
-      const subdomain = parts[0];
-      if (subdomain !== 'www' && subdomain !== 'api' && subdomain !== 'csaap') {
-        return subdomain;
-      }
-    }
-    return 'main'; // Default subdomain for main site
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -353,19 +423,26 @@ const Login = () => {
     }));
   };
 
-  // Updated handleSubmit with dynamic API endpoint
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
-    const API_BASE_URL = getApiBaseUrl();
-    const currentSubdomain = getCurrentSubdomain();
+    const { fullUrl, subdomain, baseUrl } = apiConfig;
 
-    console.log(`Using API endpoint: ${API_BASE_URL}/api/login`);
-    console.log(`Current subdomain: ${currentSubdomain}`);
+    console.log('=== Login Debug Info ===');
+    console.log(`Subdomain: ${subdomain}`);
+    console.log(`Base URL: ${baseUrl}`);
+    console.log(`Full API URL: ${fullUrl}`);
+    console.log(`Environment: ${import.meta.env.MODE}`);
+    console.log(`Credentials:`, { 
+      email: credentials.username, 
+      password: '***', 
+      subdomain,
+      user_type: userType 
+    });
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/login`, {
+      const response = await fetch(fullUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -374,50 +451,66 @@ const Login = () => {
         body: JSON.stringify({
           email: credentials.username,
           password: credentials.password,
-          subdomain: currentSubdomain, // Send subdomain to API for tenant identification
-          user_type: userType // Send user type for role-based access
+          subdomain: subdomain,
+          user_type: userType
         }),
       });
 
       const data = await response.json();
 
+      console.log('=== Response Debug ===');
+      console.log(`Status: ${response.status}`);
+      console.log(`Response:`, data);
+
       if (response.ok) {
-        // Store authentication data
+        // Store authentication data with subdomain context
         localStorage.setItem('authToken', data.token);
         localStorage.setItem('userData', JSON.stringify(data.user));
-        localStorage.setItem('currentSubdomain', currentSubdomain);
-        localStorage.setItem('apiBaseUrl', API_BASE_URL);
+        localStorage.setItem('currentSubdomain', subdomain);
+        localStorage.setItem('apiBaseUrl', baseUrl);
+        localStorage.setItem('loginEndpoint', apiConfig.loginEndpoint);
+        localStorage.setItem('loginTime', new Date().toISOString());
         
         setUserData(data.user);
         setIsLoggedIn(true);
         
-        // Optional: Show success message
-        console.log('Login successful for subdomain:', currentSubdomain);
+        console.log(`✅ Login successful for tenant: ${subdomain}`);
+        console.log('User role:', data.user.role);
+        console.log(`API Base URL stored: ${baseUrl}`);
       } else {
-        alert('Login failed: ' + (data.message || 'Unknown error'));
+        const errorMsg = data.message || data.exception || 'Unknown error';
+        alert(`Login failed: ${errorMsg}`);
+        console.error('❌ Login failed:', data);
       }
     } catch (error) {
-      console.error('Login error:', error);
+      console.error('❌ Login error:', error);
       alert('Login error: ' + (error.message || 'Network error occurred'));
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Redirect based on role after successful login
+  // Enhanced redirect logic with subdomain awareness
   if (isLoggedIn && userData) {
-    switch (userData.role) {
-      case 'superadmin':
-        return <Navigate to="/super-admin-dashboard" replace />;
-      case 'admin':
-        return <Navigate to="/builder-erp/admin" replace />;
-      case 'distributor':
-        return <Navigate to="/distributor-dashboard" replace />;
-      case 'user':
-        return <Navigate to="/" replace />;
-      default:
-        return <Navigate to="/" replace />;
-    }
+    const getDashboardPath = () => {
+      const basePaths = {
+        superadmin: '/super-admin-dashboard',
+        admin: '/builder-erp/admin',
+        distributor: '/distributor-dashboard',
+        user: '/'
+      };
+
+      let path = basePaths[userData.role] || '/';
+      
+      // Add subdomain to path if not main domain
+      if (currentSubdomain !== 'main') {
+        path = `${path}?tenant=${currentSubdomain}`;
+      }
+      
+      return path;
+    };
+
+    return <Navigate to={getDashboardPath()} replace />;
   }
 
   const togglePasswordVisibility = () => {
@@ -425,35 +518,44 @@ const Login = () => {
   };
 
   const getLoginTitle = () => {
-    switch(userType) {
-      case 'admin': return 'Admin Login';
-      case 'distributor': return 'Distributor Login';
-      case 'user': return 'User Login';
-      default: return 'Login';
-    }
+    const titles = {
+      admin: 'Admin Login',
+      distributor: 'Distributor Login',
+      user: 'User Login'
+    };
+    return titles[userType] || 'Login';
   };
 
   const getWelcomeMessage = () => {
-    const currentSubdomain = getCurrentSubdomain();
-    const subdomainDisplay = currentSubdomain !== 'main' ? ` (${currentSubdomain})` : '';
+    const messages = {
+      admin: `Sign in to access the CSaap ERP Admin Panel`,
+      distributor: `Sign in to access your CSaap ERP Distributor Account`,
+      user: `Sign in to access your CSaap ERP Account`
+    };
     
-    switch(userType) {
-      case 'admin': return `Sign in to access the CSaap ERP Admin Panel${subdomainDisplay}`;
-      case 'distributor': return `Sign in to access your CSaap ERP Distributor Account${subdomainDisplay}`;
-      case 'user': return `Sign in to access your CSaap ERP Account${subdomainDisplay}`;
-      default: return `Sign in to access your CSaap ERP account${subdomainDisplay}`;
+    const baseMessage = messages[userType] || 'Sign in to access your CSaap ERP account';
+    
+    // Add subdomain info if not main domain
+    if (currentSubdomain !== 'main') {
+      return `${baseMessage} for ${currentSubdomain}`;
     }
+    
+    return baseMessage;
   };
 
-  // Display current environment info (optional, remove in production)
+  // Helper to display current environment
   const getEnvironmentInfo = () => {
-    const apiUrl = getApiBaseUrl();
-    const subdomain = getCurrentSubdomain();
-    return `Environment: ${subdomain} | API: ${apiUrl}`;
+    return `Tenant: ${currentSubdomain} | API: ${apiConfig.baseUrl}`;
+  };
+
+  // For local development testing - switch between subdomains
+  const handleSubdomainTest = (testSubdomain) => {
+    localStorage.setItem('testSubdomain', testSubdomain);
+    window.location.reload();
   };
 
   return (
-    <div className="rounded-2xl flex flex-col md:flex-row ">
+    <div className="rounded-2xl flex flex-col md:flex-row">
       {/* Left side - Image */}
       <div className="w-full md:w-2/5 flex items-center justify-center bg-gradient-to-br from-blue-100 to-indigo-100 p-8 md:p-12">
         <div className="w-full flex flex-col items-center">
@@ -465,11 +567,48 @@ const Login = () => {
             />
           </div>
           <div className="text-center hidden md:block">
-            <h1 className="text-2xl font-bold text-gray-800">Csaap ERP System</h1>
+            <h1 className="text-2xl font-bold text-gray-800">CSaap ERP System</h1>
             <p className="text-gray-600 mt-2">Streamline your business operations with our enterprise resource planning solution</p>
-            {/* Environment info - remove in production */}
-            <div className="mt-4 p-2 bg-blue-50 rounded-lg">
-              <p className="text-xs text-blue-600">{getEnvironmentInfo()}</p>
+            
+            {/* Debug information */}
+            <div className="mt-4 p-2 bg-blue-50 rounded-lg border border-blue-200">
+              <p className="text-xs text-blue-600 font-medium">{getEnvironmentInfo()}</p>
+              <p className="text-xs text-blue-500 mt-1">
+                Full URL: <strong>{apiConfig.fullUrl}</strong>
+              </p>
+              
+              {/* Local development testing */}
+              {import.meta.env.MODE === 'development' && (
+                <div className="mt-2 pt-2 border-t border-blue-200">
+                  <p className="text-xs text-blue-400 mb-1">Test Subdomains:</p>
+                  <div className="flex gap-1 justify-center">
+                    <button 
+                      onClick={() => handleSubdomainTest('main')}
+                      className={`text-xs px-2 py-1 rounded hover:bg-blue-200 ${
+                        currentSubdomain === 'main' ? 'bg-blue-200 border border-blue-300' : 'bg-blue-100'
+                      }`}
+                    >
+                      Main
+                    </button>
+                    <button 
+                      onClick={() => handleSubdomainTest('test1')}
+                      className={`text-xs px-2 py-1 rounded hover:bg-blue-200 ${
+                        currentSubdomain === 'test1' ? 'bg-blue-200 border border-blue-300' : 'bg-blue-100'
+                      }`}
+                    >
+                      test1.csaap.com
+                    </button>
+                    <button 
+                      onClick={() => handleSubdomainTest('company1')}
+                      className={`text-xs px-2 py-1 rounded hover:bg-blue-200 ${
+                        currentSubdomain === 'company1' ? 'bg-blue-200 border border-blue-300' : 'bg-blue-100'
+                      }`}
+                    >
+                      company1.csaap.com
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -488,6 +627,13 @@ const Login = () => {
             </div>
             <h2 className="text-3xl font-bold text-gray-800">{getLoginTitle()}</h2>
             <p className="text-gray-600 mt-2">{getWelcomeMessage()}</p>
+            
+            {/* Mobile debug info */}
+            <div className="mt-3 p-2 bg-blue-50 rounded-lg md:hidden">
+              <p className="text-xs text-blue-600">Tenant: {currentSubdomain}</p>
+              <p className="text-xs text-blue-500">API: {apiConfig.baseUrl}</p>
+              <p className="text-xs text-blue-400">URL: {apiConfig.fullUrl}</p>
+            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
@@ -599,7 +745,7 @@ const Login = () => {
                   Signing in...
                 </div>
               ) : (
-                `Sign in as ${userType.charAt(0).toUpperCase() + userType.slice(1)}`
+                `Sign in to ${currentSubdomain !== 'main' ? currentSubdomain + '.csaap.com' : 'CSaap ERP'}`
               )}
             </button>
 
@@ -614,7 +760,10 @@ const Login = () => {
               </div>
 
               <div className="mt-4 text-center">
-                <a href="/signup" className="inline-flex items-center font-medium text-blue-600 hover:text-blue-500 transition">
+                <a 
+                  href={currentSubdomain !== 'main' ? `/signup?tenant=${currentSubdomain}` : '/signup'} 
+                  className="inline-flex items-center font-medium text-blue-600 hover:text-blue-500 transition"
+                >
                   Create an account
                   <svg className="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -626,6 +775,9 @@ const Login = () => {
 
           <div className="mt-8 text-center text-sm text-gray-500">
             <p>© {new Date().getFullYear()} CSaap ERP. All rights reserved.</p>
+            {currentSubdomain !== 'main' && (
+              <p className="mt-1 text-xs">Tenant: {currentSubdomain}.csaap.com | Using tenant-specific API</p>
+            )}
           </div>
         </div>
       </div>

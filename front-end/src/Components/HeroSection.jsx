@@ -30,7 +30,7 @@ const HeroSection = () => {
                   placeholder="Mobile number" 
                   className="h-12 w-full pl-5 pr-28 bg-transparent focus:outline-none"
                 />
-                <button className="absolute right-1 top-1 h-10 bg-[#f6731a] text-white w-24 rounded-xl shadow-orange transition-colors hover:bg-orange-600">
+                <button className="absolute right-1 top-1 h-10 bg-[#f6731a] text-white w-24 rounded-xl shadow-orange transition-colors hover:bg-orange-600 cursor-pointer">
                   Get a Call
                 </button>
               </div>
