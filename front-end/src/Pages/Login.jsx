@@ -414,7 +414,7 @@ const Login = () => {
       case 'distributor':
         return <Navigate to="/distributor-dashboard" replace />;
       case 'user':
-        return <Navigate to="/user-dashboard" replace />;
+        return <Navigate to="/" replace />;
       default:
         return <Navigate to="/" replace />;
     }

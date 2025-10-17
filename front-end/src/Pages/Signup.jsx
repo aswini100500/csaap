@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
+    name: '',
     email: '',
     mobile: '',
     password: '',
-    confirmPassword: ''
+    password_confirmation: '',
+    role: 'user'
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [role, setRole] = useState([]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,17 +27,65 @@ const SignUp = () => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Handle signup logic here
-    console.log('Sign up attempted with:', formData);
-    setIsLoading(false);
+    // Validate passwords match
+    if (formData.password !== formData.password_confirmation) {
+      alert('Passwords do not match!');
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      // Send the actual form data with proper headers
+      const response = await axios.post('https://api.csaap.com/api/register', formData, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      });
+      
+      console.log('Sign up successful:', response.data);
+      alert('Sign up successful!');
+      
+    } catch (error) {
+      console.error('Error during sign up:', error);
+      
+      // Enhanced error handling to see what's wrong
+      if (error.response) {
+        // The server responded with a status code that falls out of the 2xx range
+        console.log('Error response data:', error.response.data);
+        console.log('Error status:', error.response.status);
+        
+        if (error.response.status === 422) {
+          // Handle validation errors
+          const validationErrors = error.response.data;
+          if (validationErrors.errors) {
+            // Display specific validation errors
+            const errorMessages = Object.values(validationErrors.errors).flat().join('\n');
+            alert(`Validation failed:\n${errorMessages}`);
+          } else {
+            alert('Validation failed. Please check your input.');
+          }
+        } else {
+          alert(`Sign up failed: ${error.response.data.message || 'Please try again.'}`);
+        }
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.log('Error request:', error.request);
+        alert('Network error. Please check your connection.');
+      } else {
+        // Something happened in setting up the request
+        console.log('Error message:', error.message);
+        alert('Sign up failed. Please try again.');
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
+  // ... rest of your JSX remains the same ...
   return (
     <div className="flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50 py-8 px-4">
-      <div className="w-full  flex bg-white rounded-xl shadow-lg overflow-hidden">
+      <div className="w-full flex bg-white rounded-xl shadow-lg overflow-hidden">
         {/* Left side - Image */}
         <div className="hidden md:block md:w-2/5 bg-blue-100 p-6">
           <div className="h-full flex items-center justify-center">
@@ -57,7 +108,6 @@ const SignUp = () => {
               </div>
             </div>
             <h2 className="text-2xl font-bold text-gray-800">Create Account</h2>
-          
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -73,9 +123,9 @@ const SignUp = () => {
                 </div>
                 <input
                   type="text"
-                  id="fullName"
-                  name="fullName"
-                  value={formData.fullName}
+                  id="name"
+                  name="name"
+                  value={formData.name}
                   onChange={handleChange}
                   placeholder="Enter your full name"
                   className="w-full pl-9 pr-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
@@ -102,29 +152,6 @@ const SignUp = () => {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Enter your email"
-                  className="w-full pl-9 pr-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
-                  required
-                />
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="mobile" className="block text-sm font-medium text-gray-700 mb-1">
-                Mobile*
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <svg className="h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                  </svg>
-                </div>
-                <input
-                  type="tel"
-                  id="mobile"
-                  name="mobile"
-                  value={formData.mobile}
-                  onChange={handleChange}
-                  placeholder="Enter your mobile number"
                   className="w-full pl-9 pr-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
                   required
                 />
@@ -184,8 +211,8 @@ const SignUp = () => {
                 <input
                   type={showConfirmPassword ? "text" : "password"}
                   id="confirmPassword"
-                  name="confirmPassword"
-                  value={formData.confirmPassword}
+                  name="password_confirmation"
+                  value={formData.password_confirmation}
                   onChange={handleChange}
                   placeholder="Confirm your password"
                   className="w-full pl-9 pr-10 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
@@ -241,8 +268,6 @@ const SignUp = () => {
               </p>
             </div>
           </form>
-
-        
         </div>
       </div>
     </div>
@@ -250,6 +275,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-
-
-
